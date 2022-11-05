@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/background_category_item"
+    android:layout_width="98dp"
+    android:layout_height="94dp">
+
+
+    <ImageView
+        android:id="@+id/image_category_background_item"
+        android:layout_width="0dp"
+        android:layout_height="71dp"
+        android:layout_marginTop="2dp"
+        android:scaleType="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/image_background_category_true" />
+
+    <ImageView
+        android:id="@+id/image_category_item"
+        android:layout_width="0dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="22dp"
+        android:layout_marginBottom="40dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/image_category_telephone" />
+
+    <TextView
+        android:id="@+id/text_name_category_item"
+        android:layout_width="0dp"
+        android:layout_height="15dp"
+        android:layout_marginTop="7dp"
+        android:gravity="center"
+        android:text="Phones"
+        android:textColor="#FF6E4E"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/image_category_background_item" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

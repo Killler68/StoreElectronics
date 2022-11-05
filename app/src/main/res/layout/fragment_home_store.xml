@@ -1,14 +1,309 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#F5F5F5"
     tools:context=".homestore.FragmentHomeStore">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content">
 
-</FrameLayout>
+        <TextView
+            android:id="@+id/text_name_city_home_store"
+            android:layout_width="0dp"
+            android:layout_height="19dp"
+            android:layout_marginStart="155dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="140dp"
+            android:gravity="center"
+            android:text="Zihuatanejo, Gro"
+            android:textColor="#010035"
+            android:textSize="15sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/image_location_home_store"
+            android:layout_width="0dp"
+            android:layout_height="19dp"
+            android:layout_marginStart="132dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="11dp"
+            android:src="@drawable/image_location"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/text_name_city_home_store"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/image_filter_home_store"
+            android:layout_width="0dp"
+            android:layout_height="19dp"
+            android:layout_marginStart="94dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="35dp"
+            android:src="@drawable/image_filter"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/text_name_city_home_store"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/image_group_home_store"
+            android:layout_width="0dp"
+            android:layout_height="5dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="33dp"
+            android:src="@drawable/image_group"
+            app:layout_constraintStart_toEndOf="@id/text_name_city_home_store"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/text_name_category_home_store"
+            android:layout_width="0dp"
+            android:layout_height="32dp"
+            android:layout_marginStart="17dp"
+            android:layout_marginTop="18dp"
+            android:gravity="center"
+            android:text="Select Category"
+            android:textColor="#010035"
+            android:textSize="25sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/text_name_city_home_store" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="19dp"
+            android:layout_marginStart="119dp"
+            android:layout_marginTop="28dp"
+            android:gravity="center"
+            android:text="view all"
+            android:textColor="#FF6E4E"
+            android:textSize="15sp"
+            app:layout_constraintStart_toEndOf="@+id/text_name_category_home_store"
+            app:layout_constraintTop_toBottomOf="@+id/text_name_city_home_store" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_category_home_store"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:orientation="horizontal"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_name_category_home_store"
+            tools:listitem="@layout/recycler_category_item_home_store" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card_view_search_home_store"
+            android:layout_width="0dp"
+            android:layout_height="34dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="35dp"
+            android:layout_marginEnd="82dp"
+            android:backgroundTint="@color/white"
+            app:cardCornerRadius="50dp"
+            app:cardElevation="1dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/recycler_category_home_store">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/image_search_home_store"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:src="@drawable/image_search"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <EditText
+                    android:id="@+id/edit_text_home_store"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="11dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:background="@null"
+                    android:hint="Search"
+                    android:textColor="#2A2D33"
+                    android:textSize="14sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/image_search_home_store"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+
+        <ImageView
+            android:id="@+id/imageView7"
+            android:layout_width="0dp"
+            android:layout_height="34dp"
+            android:layout_marginStart="11dp"
+            android:layout_marginTop="35dp"
+            android:layout_marginEnd="37dp"
+            android:scaleType="center"
+            android:src="@drawable/image_background_qrcode"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/card_view_search_home_store"
+            app:layout_constraintTop_toBottomOf="@+id/recycler_category_home_store" />
+
+        <ImageView
+            android:id="@+id/image_qrcode_home_store"
+            android:layout_width="0dp"
+            android:layout_height="14dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="45dp"
+            android:src="@drawable/image_qrcode"
+            app:layout_constraintStart_toEndOf="@+id/card_view_search_home_store"
+            app:layout_constraintTop_toBottomOf="@+id/recycler_category_home_store" />
+
+        <TextView
+            android:id="@+id/text_sales_home_store"
+            android:layout_width="0dp"
+            android:layout_height="32dp"
+            android:layout_marginStart="17dp"
+            android:layout_marginTop="24dp"
+            android:text="Hot Sales"
+            android:textColor="#010035"
+            android:textSize="25sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/card_view_search_home_store" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="19dp"
+            android:layout_marginStart="189dp"
+            android:layout_marginTop="31dp"
+            android:layout_marginEnd="33dp"
+            android:text="see more"
+            android:textColor="#FF6E4E"
+            android:textSize="15sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/card_view_search_home_store" />
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/view_pager_hot_sales_home_store"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_sales_home_store" />
+
+        <TextView
+            android:id="@+id/text_best_seller"
+            android:layout_width="0dp"
+            android:layout_height="32dp"
+            android:layout_marginStart="17dp"
+            android:layout_marginTop="11dp"
+            android:text="Best Seller"
+            android:textColor="#010035"
+            android:textSize="25sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/view_pager_hot_sales_home_store" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="19dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="33dp"
+            android:text="see more"
+            android:textColor="#FF6E4E"
+            android:textSize="15sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/view_pager_hot_sales_home_store" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_best_seller_home_store"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:orientation="horizontal"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_best_seller"
+            tools:listitem="@layout/recycler_best_seller_item_home_store" />
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="0dp"
+            android:layout_height="72dp"
+            android:layout_marginTop="22dp"
+            android:backgroundTint="#010035"
+            app:cardCornerRadius="30dp"
+            app:cardElevation="0dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/recycler_best_seller_home_store">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/imageView9"
+                    android:layout_width="8dp"
+                    android:layout_height="8dp"
+                    android:layout_marginStart="50dp"
+                    android:layout_marginTop="32dp"
+                    android:layout_marginEnd="7dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/image_point" />
+
+                <TextView
+                    android:id="@+id/textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="26dp"
+                    android:layout_weight="1"
+                    android:text="Explorer"
+                    android:textColor="@color/white"
+                    android:textSize="15sp" />
+
+                <ImageView
+                    android:id="@+id/imageView10"
+                    android:layout_width="wrap_content"
+                    android:layout_height="18dp"
+                    android:layout_marginStart="40dp"
+                    android:layout_marginTop="27dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/image_store" />
+
+                <ImageView
+                    android:id="@+id/imageView11"
+                    android:layout_width="wrap_content"
+                    android:layout_height="18dp"
+                    android:layout_marginStart="52dp"
+                    android:layout_marginTop="28dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/image_favorite" />
+
+                <ImageView
+                    android:id="@+id/imageView12"
+                    android:layout_width="wrap_content"
+                    android:layout_height="18dp"
+                    android:layout_marginStart="57dp"
+                    android:layout_marginTop="27dp"
+                    android:layout_marginEnd="67dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/image_accounts" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
