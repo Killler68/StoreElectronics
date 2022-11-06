@@ -89,4 +89,8 @@ class FragmentHomeStore : Fragment() {
         }
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
 }
