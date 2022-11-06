@@ -7,8 +7,10 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.example.storeelectronicsproject.common.fragment.getViewModelFactory
+import com.example.storeelectronicsproject.common.fragment.navigateToFragment
 import com.example.storeelectronicsproject.databinding.FragmentHomeStoreBinding
 import com.example.storeelectronicsproject.homestore.viewmodel.HomeStoreViewModel
+import com.example.storeelectronicsproject.productdetails.FragmentProductDetails
 
 
 class FragmentHomeStore : Fragment() {
@@ -27,7 +29,9 @@ class FragmentHomeStore : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        binding.textNameCategoryHomeStore.setOnClickListener {
+            navigateToFragment(FragmentProductDetails())
+        }
 
     }
 
