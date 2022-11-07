@@ -15,6 +15,7 @@ import com.example.storeelectronicsproject.homestore.model.CategoryData
 import com.example.storeelectronicsproject.homestore.viewholder.BestSellerItem
 import com.example.storeelectronicsproject.homestore.viewholder.CategoryItem
 import com.example.storeelectronicsproject.homestore.viewmodel.HomeStoreViewModel
+import com.example.storeelectronicsproject.mycart.FragmentMyCart
 import com.example.storeelectronicsproject.productdetails.FragmentProductDetails
 import com.mikepenz.fastadapter.GenericFastAdapter
 import com.mikepenz.fastadapter.adapters.ItemAdapter
@@ -74,6 +75,9 @@ class FragmentHomeStore : Fragment() {
     private fun setupListeners() {
         binding.textNameCategoryHomeStore.setOnClickListener {
             navigateToFragment(FragmentProductDetails())
+        }
+        binding.imageView10.setOnClickListener {
+            navigateToFragment(FragmentMyCart())
         }
 
     }
