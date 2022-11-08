@@ -2,10 +2,8 @@ package com.example.storeelectronicsproject.productdetails
 
 import androidx.lifecycle.ViewModel
 import com.example.storeelectronicsproject.productdetails.repository.DetailsRepositoryImpl
-import com.example.storeelectronicsproject.productdetails.usecase.DetailsRepository
-import com.example.storeelectronicsproject.productdetails.usecase.DetailsShopRepository
-import com.example.storeelectronicsproject.productdetails.usecase.DetailsShopUseCaseImpl
-import com.example.storeelectronicsproject.productdetails.usecase.DetailsUseCaseImpl
+import com.example.storeelectronicsproject.productdetails.usecase.*
+import com.example.storeelectronicsproject.productdetails.viewmodel.DetailsOnBoardingUseCase
 import com.example.storeelectronicsproject.productdetails.viewmodel.DetailsShopUseCase
 import com.example.storeelectronicsproject.productdetails.viewmodel.DetailsUseCase
 import com.example.storeelectronicsproject.productdetails.viewmodel.ProductDetailsViewModel
@@ -24,6 +22,10 @@ class ProductDetailsModule {
     fun provideDetailsShopRepository(): DetailsShopRepository = DetailsRepositoryImpl()
 
     @Provides
+    fun provideDetailsOnBoardingRepository(): DetailsOnBoardingRepository =
+        DetailsRepositoryImpl()
+
+    @Provides
     fun provideDetailsUseCase(repository: DetailsRepository): DetailsUseCase =
         DetailsUseCaseImpl(repository)
 
@@ -32,12 +34,17 @@ class ProductDetailsModule {
         DetailsShopUseCaseImpl(repository)
 
     @Provides
+    fun provideDetailsOnBoardingUseCase(repository: DetailsOnBoardingRepository):
+            DetailsOnBoardingUseCase = DetailsOnBoardingUseCaseImpl(repository)
+
+    @Provides
     @IntoMap
     @ClassKey(ProductDetailsViewModel::class)
     fun provideProductDetailsViewModel(
         detailsUseCase: DetailsUseCase,
-        shopUseCase: DetailsShopUseCase
+        shopUseCase: DetailsShopUseCase,
+        onBoardingUseCase: DetailsOnBoardingUseCase
     ): ViewModel {
-        return ProductDetailsViewModel(detailsUseCase, shopUseCase)
+        return ProductDetailsViewModel(detailsUseCase, shopUseCase, onBoardingUseCase)
     }
 }

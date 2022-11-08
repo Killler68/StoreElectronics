@@ -9,6 +9,7 @@ import androidx.fragment.app.viewModels
 import com.example.storeelectronicsproject.common.flow.launchWhenViewCreated
 import com.example.storeelectronicsproject.common.fragment.getViewModelFactory
 import com.example.storeelectronicsproject.databinding.FragmentProductDetailsBinding
+import com.example.storeelectronicsproject.productdetails.adapter.DetailsOnBoardingAdapter
 import com.example.storeelectronicsproject.productdetails.model.DetailsData
 import com.example.storeelectronicsproject.productdetails.model.DetailsShopData
 import com.example.storeelectronicsproject.productdetails.viewmodel.ProductDetailsViewModel
@@ -32,6 +33,7 @@ class FragmentProductDetails : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupObservables()
+        setOnBoardingHotSalesItems()
         with(viewModel) {
             loadDetails()
             loadDetailsShop()
@@ -58,6 +60,12 @@ class FragmentProductDetails : Fragment() {
         binding.textCameraDetails.text = detailsShopData.camera
         binding.textHddDetails.text = detailsShopData.sd
     }
+
+    private fun setOnBoardingHotSalesItems() {
+        val onBoardingHotSalesAdapter = DetailsOnBoardingAdapter(this)
+        binding.viewPagerDetails.adapter = onBoardingHotSalesAdapter
+    }
+
 
     override fun onDestroyView() {
         super.onDestroyView()
