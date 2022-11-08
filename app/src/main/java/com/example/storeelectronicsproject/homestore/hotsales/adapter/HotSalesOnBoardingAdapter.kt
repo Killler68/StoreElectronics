@@ -2,7 +2,7 @@ package com.example.storeelectronicsproject.homestore.hotsales.adapter
 
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.example.storeelectronicsproject.homestore.hotsales.FragmentHotSales
+import com.example.storeelectronicsproject.homestore.hotsales.FragmentHotSalesOnBoarding
 
 class HotSalesOnBoardingAdapter(fragment: Fragment) :
     FragmentStateAdapter(fragment) {
@@ -13,6 +13,6 @@ class HotSalesOnBoardingAdapter(fragment: Fragment) :
     }
 
     override fun createFragment(position: Int): Fragment {
-        return FragmentHotSales()
+        return FragmentHotSalesOnBoarding()
     }
 }

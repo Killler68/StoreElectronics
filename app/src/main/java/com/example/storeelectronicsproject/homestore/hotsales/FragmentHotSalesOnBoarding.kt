@@ -12,7 +12,7 @@ import com.example.storeelectronicsproject.databinding.FragmentHotSalesBinding
 import com.example.storeelectronicsproject.homestore.viewmodel.HomeStoreViewModel
 
 
-class FragmentHotSales : Fragment() {
+class FragmentHotSalesOnBoarding : Fragment() {
 
     private var _binding: FragmentHotSalesBinding? = null
     private val binding get() = _binding!!
