@@ -4,6 +4,6 @@ import com.example.storeelectronicsproject.common.navigation.NavCommand
 
 interface HomeStoreRouter {
 
-    fun toProductDescription(): NavCommand
+    fun toProductDescription(id: Int): NavCommand
     fun toMyCart(): NavCommand
 }

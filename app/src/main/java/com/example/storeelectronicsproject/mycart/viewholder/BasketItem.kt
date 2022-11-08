@@ -2,6 +2,7 @@ package com.example.storeelectronicsproject.mycart.viewholder
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import com.bumptech.glide.Glide
 import com.example.storeelectronicsproject.R
 import com.example.storeelectronicsproject.databinding.RecyclerItemMyCartBinding
 import com.example.storeelectronicsproject.mycart.model.BasketData
@@ -16,6 +17,11 @@ class BasketItem(
 
         binding.textNameMyCart.text = basketData.title
         binding.textPriceMyCart.text = basketData.price.toString()
+
+        Glide
+            .with(binding.root)
+            .load(basketData.images)
+            .into(binding.imageMyCart)
 
     }
 

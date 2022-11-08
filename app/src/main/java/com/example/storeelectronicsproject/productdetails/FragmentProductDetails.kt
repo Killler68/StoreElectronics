@@ -17,6 +17,8 @@ import com.example.storeelectronicsproject.productdetails.model.DetailsShopData
 import com.example.storeelectronicsproject.productdetails.viewmodel.ProductDetailsViewModel
 
 
+const val KEY = "key"
+
 class FragmentProductDetails : Fragment() {
 
 
@@ -34,11 +36,13 @@ class FragmentProductDetails : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        val arguments = requireArguments().getInt(KEY)
+
         setupObservables()
         setOnBoardingHotSalesItems()
         setupListeners()
         with(viewModel) {
-            loadDetails()
+            loadDetails(arguments)
             loadDetailsShop()
         }
     }
@@ -46,8 +50,8 @@ class FragmentProductDetails : Fragment() {
     private fun setupObservables() {
         launchWhenViewCreated {
             viewModel.apply {
-                detailsData.observe(::onDataLoadedDetails)
-                detailsShopData.observe(::onDataLoadedShopDetails)
+                details.observe(::onDataLoadedDetails)
+                detailsShop.observe(::onDataLoadedShopDetails)
                 navCommand.observe(::onDataLoadedNavigation)
             }
         }
@@ -62,6 +66,7 @@ class FragmentProductDetails : Fragment() {
     private fun onDataLoadedShopDetails(detailsShopData: DetailsShopData) {
         binding.textProcessorDetails.text = detailsShopData.CPU
         binding.textCameraDetails.text = detailsShopData.camera
+        binding.textRamDetails.text = detailsShopData.ssd
         binding.textHddDetails.text = detailsShopData.sd
     }
 

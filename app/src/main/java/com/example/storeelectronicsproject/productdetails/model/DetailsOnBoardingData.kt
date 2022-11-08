@@ -1,6 +1,6 @@
 package com.example.storeelectronicsproject.productdetails.model
 
 data class DetailsOnBoardingData(
-    val id: Int,
-    val images: String
+    val id: String,
+    val images: List<String>,
 )

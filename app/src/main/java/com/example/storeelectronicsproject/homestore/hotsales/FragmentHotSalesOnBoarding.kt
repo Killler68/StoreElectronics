@@ -4,13 +4,16 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import com.bumptech.glide.Glide
 import com.example.storeelectronicsproject.common.flow.launchWhenViewCreated
 import com.example.storeelectronicsproject.common.fragment.getViewModelFactory
 import com.example.storeelectronicsproject.databinding.FragmentHotSalesBinding
 import com.example.storeelectronicsproject.homestore.viewmodel.HomeStoreViewModel
 
+const val hotSalesIdKey = "hotSalesIdKey"
 
 class FragmentHotSalesOnBoarding : Fragment() {
 
@@ -18,6 +21,10 @@ class FragmentHotSalesOnBoarding : Fragment() {
     private val binding get() = _binding!!
 
     private val viewModel: HomeStoreViewModel by viewModels { getViewModelFactory() }
+
+    private val hotSalesId by lazy {
+        arguments?.getInt(hotSalesIdKey)!!
+    }
 
 
     override fun onCreateView(
@@ -32,11 +39,27 @@ class FragmentHotSalesOnBoarding : Fragment() {
 
         launchWhenViewCreated {
             viewModel.hotSales.observe {
-                binding.textNamePhoneItem.text = it.title
-                binding.textDescriptionPhoneItem.text = it.subtitle
+                it.map {
+                    binding.textNamePhoneItem.text = it.title
+                    binding.textDescriptionPhoneItem.text = it.subtitle
+
+                    Glide
+                        .with(requireView())
+                        .load(it.picture)
+                        .into(binding.imageView)
+
+                }
             }
         }
-        viewModel.loadHotSales()
+        viewModel.loadHotSales(hotSalesId)
     }
+    companion object {
+        fun create(id: Int): FragmentHotSalesOnBoarding {
+            val fragment = FragmentHotSalesOnBoarding()
+            fragment.arguments = bundleOf(hotSalesIdKey to id)
+            return fragment
+        }
+    }
+
 
 }

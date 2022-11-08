@@ -69,7 +69,12 @@ class FragmentHomeStore : Fragment() {
     }
 
     private fun onDataLoadedBestSeller(bestSellerData: List<BestSellerData>) {
-        FastAdapterDiffUtil[bestSellerItemAdapter] = bestSellerData.map { BestSellerItem(it) }
+        FastAdapterDiffUtil[bestSellerItemAdapter] = bestSellerData.map {
+            BestSellerItem(
+                it,
+                viewModel::navigateToProductDescription
+            )
+        }
     }
 
     private fun onDataLoadedCategory(categoryData: List<CategoryData>) {
@@ -81,9 +86,6 @@ class FragmentHomeStore : Fragment() {
     }
 
     private fun setupListeners() {
-        binding.textNameCategoryHomeStore.setOnClickListener {
-            viewModel.navigateToProductDescription()
-        }
         binding.imageView10.setOnClickListener {
             viewModel.navigateToMyCart()
         }

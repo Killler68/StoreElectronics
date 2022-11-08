@@ -4,6 +4,6 @@ import com.example.storeelectronicsproject.common.navigation.NavCommand
 
 interface HomeStoreProductDescriptionNavigatorUseCase {
 
-    operator fun invoke(): NavCommand
+    operator fun invoke(id: Int): NavCommand
 
 }

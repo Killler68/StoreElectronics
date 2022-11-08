@@ -12,6 +12,6 @@ class DetailsOnBoardingAdapter(fragment: Fragment) :
     }
 
     override fun createFragment(position: Int): Fragment {
-        return FragmentDetailsOnBoarding()
+        return FragmentDetailsOnBoarding.create(position)
     }
 }

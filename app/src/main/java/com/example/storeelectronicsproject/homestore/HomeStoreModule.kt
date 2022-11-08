@@ -1,6 +1,8 @@
 package com.example.storeelectronicsproject.homestore
 
 import androidx.lifecycle.ViewModel
+import com.example.storeelectronicsproject.common.api.StoreApi
+import com.example.storeelectronicsproject.common.network.NetWorkModule
 import com.example.storeelectronicsproject.homestore.repository.HomeStoreRepositoryImpl
 import com.example.storeelectronicsproject.homestore.router.HomeStoreRouterImpl
 import com.example.storeelectronicsproject.homestore.usecase.*
@@ -10,17 +12,17 @@ import dagger.Provides
 import dagger.multibindings.ClassKey
 import dagger.multibindings.IntoMap
 
-@Module
+@Module(includes = [NetWorkModule::class])
 class HomeStoreModule {
 
     @Provides
-    fun provideBestSellerRepository(): BestSellerRepository = HomeStoreRepositoryImpl()
+    fun provideBestSellerRepository(storeApi: StoreApi): BestSellerRepository = HomeStoreRepositoryImpl(storeApi)
 
     @Provides
-    fun provideCategoryRepository(): CategoryRepository = HomeStoreRepositoryImpl()
+    fun provideCategoryRepository(storeApi: StoreApi): CategoryRepository = HomeStoreRepositoryImpl(storeApi)
 
     @Provides
-    fun provideHotSalesRepository(): HotSalesRepository = HomeStoreRepositoryImpl()
+    fun provideHotSalesRepository(storeApi: StoreApi): HotSalesRepository = HomeStoreRepositoryImpl(storeApi)
 
     @Provides
     fun provideBestSellerUseCase(repository: BestSellerRepository): BestSellerUseCase =

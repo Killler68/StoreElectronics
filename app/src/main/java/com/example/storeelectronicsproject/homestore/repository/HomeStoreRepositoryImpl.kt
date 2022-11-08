@@ -1,32 +1,70 @@
 package com.example.storeelectronicsproject.homestore.repository
 
+import com.example.storeelectronicsproject.common.api.StoreApi
 import com.example.storeelectronicsproject.homestore.model.BestSellerData
 import com.example.storeelectronicsproject.homestore.model.CategoryData
 import com.example.storeelectronicsproject.homestore.model.HotSalesData
 import com.example.storeelectronicsproject.homestore.usecase.BestSellerRepository
 import com.example.storeelectronicsproject.homestore.usecase.CategoryRepository
 import com.example.storeelectronicsproject.homestore.usecase.HotSalesRepository
+import io.reactivex.Single
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.schedulers.Schedulers
 
-class HomeStoreRepositoryImpl : BestSellerRepository, CategoryRepository, HotSalesRepository {
+class HomeStoreRepositoryImpl(private val storeApi: StoreApi) :
+    BestSellerRepository, CategoryRepository, HotSalesRepository {
 
-    override fun getBestSeller(): List<BestSellerData> = testBest
+    override fun getBestSeller(): Single<List<BestSellerData>> {
+        try {
+            val response = storeApi.getHomeStore()
+            return response.map {
+                it.best_seller.map {
+                    BestSellerData(
+                        it.discount_price,
+                        it.id,
+                        it.is_favorites,
+                        it.picture,
+                        it.price_without_discount,
+                        it.title
+                    )
+                }
+            }
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+        } catch (e: Exception) {
+            throw Exception()
+        }
+    }
+
+    override fun getHotSales(): Single<List<HotSalesData>> {
+        try {
+            val response = storeApi.getHomeStore()
+            return response.map {
+                it.home_store.map {
+                    HotSalesData(
+                        it.id,
+                        it.is_buy,
+                        it.is_new,
+                        it.picture,
+                        it.subtitle,
+                        it.title
+                    )
+                }
+            }
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+        } catch (e: Exception) {
+            throw Exception()
+        }
+    }
+
     override fun getCategory(): List<CategoryData> = testCategory
-    override fun getHotSales(): HotSalesData = testHotSales
 
 }
 
-private val testBest = listOf(
-    BestSellerData("Samsung galaxy s20 Ultra", 1000, 1500),
-    BestSellerData("Samsung galaxy s10 Ultra", 800, 1200),
-    BestSellerData("Nokia", 500, 1000),
-    BestSellerData("Samsung galaxy s20 Ultra", 1000, 1500),
-    BestSellerData("Samsung galaxy s20 Ultra", 1000, 1500),
-)
 private val testCategory = listOf(
     CategoryData("Phones"),
     CategoryData("Computers"),
     CategoryData("Health"),
     CategoryData("Books"),
 )
-private val testHotSales =
-    HotSalesData(1, "true", "Phone 1", "Cool Phone 1", "1", "true")

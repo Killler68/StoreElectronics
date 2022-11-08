@@ -6,6 +6,6 @@ import com.example.storeelectronicsproject.homestore.viewmodel.HomeStoreProductD
 class HomeStoreProductDescriptionNavigatorUseCaseImpl(private val router: HomeStoreRouter) :
     HomeStoreProductDescriptionNavigatorUseCase {
 
-    override fun invoke(): NavCommand = router.toProductDescription()
+    override fun invoke(id: Int): NavCommand = router.toProductDescription(id)
 
 }

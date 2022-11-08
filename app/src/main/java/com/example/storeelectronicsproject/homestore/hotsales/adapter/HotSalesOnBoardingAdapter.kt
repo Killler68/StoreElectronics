@@ -13,6 +13,6 @@ class HotSalesOnBoardingAdapter(fragment: Fragment) :
     }
 
     override fun createFragment(position: Int): Fragment {
-        return FragmentHotSalesOnBoarding()
+        return FragmentHotSalesOnBoarding.create(position)
     }
 }

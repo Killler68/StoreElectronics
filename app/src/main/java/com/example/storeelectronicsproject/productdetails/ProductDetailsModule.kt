@@ -1,6 +1,7 @@
 package com.example.storeelectronicsproject.productdetails
 
 import androidx.lifecycle.ViewModel
+import com.example.storeelectronicsproject.common.api.StoreApi
 import com.example.storeelectronicsproject.productdetails.repository.DetailsRepositoryImpl
 import com.example.storeelectronicsproject.productdetails.router.ProductDetailsRouterImpl
 import com.example.storeelectronicsproject.productdetails.usecase.*
@@ -14,14 +15,14 @@ import dagger.multibindings.IntoMap
 class ProductDetailsModule {
 
     @Provides
-    fun provideDetailsRepository(): DetailsRepository = DetailsRepositoryImpl()
+    fun provideDetailsRepository(storeApi: StoreApi): DetailsRepository = DetailsRepositoryImpl(storeApi)
 
     @Provides
-    fun provideDetailsShopRepository(): DetailsShopRepository = DetailsRepositoryImpl()
+    fun provideDetailsShopRepository(storeApi: StoreApi): DetailsShopRepository = DetailsRepositoryImpl(storeApi)
 
     @Provides
-    fun provideDetailsOnBoardingRepository(): DetailsOnBoardingRepository =
-        DetailsRepositoryImpl()
+    fun provideDetailsOnBoardingRepository(storeApi: StoreApi): DetailsOnBoardingRepository =
+        DetailsRepositoryImpl(storeApi)
 
     @Provides
     fun provideDetailsUseCase(repository: DetailsRepository): DetailsUseCase =

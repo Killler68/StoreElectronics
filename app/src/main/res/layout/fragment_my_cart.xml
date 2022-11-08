@@ -129,10 +129,10 @@
 
         <TextView
             android:id="@+id/text_total_my_cart"
-            android:layout_width="0dp"
+            android:layout_width="60dp"
             android:layout_height="19dp"
             android:layout_marginTop="15dp"
-            android:layout_marginEnd="35dp"
+            android:layout_marginEnd="15dp"
             android:text="$6,000 us"
             android:textColor="#FFFFFF"
             android:textSize="15sp"
@@ -153,10 +153,10 @@
 
         <TextView
             android:id="@+id/text_delivery_my_cart"
-            android:layout_width="0dp"
+            android:layout_width="60dp"
             android:layout_height="19dp"
             android:layout_marginTop="15dp"
-            android:layout_marginEnd="76dp"
+            android:layout_marginEnd="15dp"
             android:text="Free"
             android:textColor="#FFFFFF"
             android:textSize="15sp"

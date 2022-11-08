@@ -1,6 +1,7 @@
 package com.example.storeelectronicsproject.mycart
 
 import androidx.lifecycle.ViewModel
+import com.example.storeelectronicsproject.common.api.StoreApi
 import com.example.storeelectronicsproject.mycart.repository.MyCartRepositoryImpl
 import com.example.storeelectronicsproject.mycart.router.MyCartRouterImpl
 import com.example.storeelectronicsproject.mycart.usecase.*
@@ -17,10 +18,10 @@ import dagger.multibindings.IntoMap
 class MyCartModule {
 
     @Provides
-    fun provideBasketRepository(): BasketRepository = MyCartRepositoryImpl()
+    fun provideBasketRepository(storeApi: StoreApi): BasketRepository = MyCartRepositoryImpl(storeApi)
 
     @Provides
-    fun provideMyCartRepository(): MyCartRepository = MyCartRepositoryImpl()
+    fun provideMyCartRepository(storeApi: StoreApi): MyCartRepository = MyCartRepositoryImpl(storeApi)
 
     @Provides
     fun provideBasketUseCase(repository: BasketRepository): BasketUseCase =
