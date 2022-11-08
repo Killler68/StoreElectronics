@@ -16,6 +16,9 @@
         <action
             android:id="@+id/action_fragmentHomeStore_to_fragmentMyCart"
             app:destination="@id/fragmentMyCart" />
+        <action
+            android:id="@+id/action_fragmentHomeStore_to_fragmentFilterOptions"
+            app:destination="@id/fragmentFilterOptions" />
     </fragment>
     <fragment
         android:id="@+id/fragmentMyCart"
@@ -35,4 +38,9 @@
             android:id="@+id/action_fragmentProductDetails_to_fragmentHomeStore"
             app:destination="@id/fragmentHomeStore" />
     </fragment>
+    <fragment
+        android:id="@+id/fragmentFilterOptions"
+        android:name="com.example.storeelectronicsproject.homestore.filteroptions.FragmentFilterOptions"
+        android:label="fragment_filter_options"
+        tools:layout="@layout/fragment_filter_options" />
 </navigation>

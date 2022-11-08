@@ -1,23 +1,21 @@
 package com.example.storeelectronicsproject.homestore.filteroptions
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.DialogFragment
-import com.example.storeelectronicsproject.R
-import com.example.storeelectronicsproject.databinding.FragmentDialogFilterOptionsBinding
+import androidx.fragment.app.Fragment
+import com.example.storeelectronicsproject.databinding.FragmentFilterOptionsBinding
 
-class DialogFragmentFilterOptions : DialogFragment() {
+class FragmentFilterOptions : Fragment() {
 
-    private var _binding: FragmentDialogFilterOptionsBinding? = null
+    private var _binding: FragmentFilterOptionsBinding? = null
     private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View = FragmentDialogFilterOptionsBinding.inflate(inflater, container, false)
+    ): View = FragmentFilterOptionsBinding.inflate(inflater, container, false)
         .also { _binding = it }
         .root
 

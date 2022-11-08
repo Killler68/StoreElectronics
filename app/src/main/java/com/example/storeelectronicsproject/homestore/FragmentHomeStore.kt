@@ -4,13 +4,16 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import com.example.storeelectronicsproject.R
 import com.example.storeelectronicsproject.common.flow.launchWhenViewCreated
 import com.example.storeelectronicsproject.common.fragment.getViewModelFactory
 import com.example.storeelectronicsproject.common.navigation.NavCommand
 import com.example.storeelectronicsproject.databinding.FragmentHomeStoreBinding
+import com.example.storeelectronicsproject.homestore.filteroptions.FragmentFilterOptions
 import com.example.storeelectronicsproject.homestore.hotsales.adapter.HotSalesOnBoardingAdapter
 import com.example.storeelectronicsproject.homestore.model.BestSellerData
 import com.example.storeelectronicsproject.homestore.model.CategoryData
@@ -84,7 +87,15 @@ class FragmentHomeStore : Fragment() {
         binding.imageView10.setOnClickListener {
             viewModel.navigateToMyCart()
         }
+        binding.imageFilterHomeStore.setOnClickListener {
+            parentFragmentManager.beginTransaction()
+                .add(R.id.container_filter_home_store, FragmentFilterOptions())
+                .commit()
 
+            binding.recyclerBestSellerHomeStore.isVisible =
+                !binding.recyclerBestSellerHomeStore.isVisible
+            binding.cardViewHomeStore.isVisible = !binding.cardViewHomeStore.isVisible
+        }
     }
 
     private fun createFastAdapter() {

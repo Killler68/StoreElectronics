@@ -8,7 +8,7 @@
     android:backgroundTint="#FFFFFF"
     app:cardCornerRadius="30dp"
     app:cardElevation="0dp"
-    tools:context=".homestore.filteroptions.DialogFragmentFilterOptions">
+    tools:context=".homestore.filteroptions.FragmentFilterOptions">
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
