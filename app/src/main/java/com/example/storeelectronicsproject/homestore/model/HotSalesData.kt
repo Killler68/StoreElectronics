@@ -1,4 +1,4 @@
-package com.example.storeelectronicsproject.homestore.viewpager.model
+package com.example.storeelectronicsproject.homestore.model
 
 data class HotSalesData(
     val id: Int,

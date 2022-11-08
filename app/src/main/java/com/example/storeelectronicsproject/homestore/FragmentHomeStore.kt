@@ -15,7 +15,7 @@ import com.example.storeelectronicsproject.homestore.model.CategoryData
 import com.example.storeelectronicsproject.homestore.viewholder.BestSellerItem
 import com.example.storeelectronicsproject.homestore.viewholder.CategoryItem
 import com.example.storeelectronicsproject.homestore.viewmodel.HomeStoreViewModel
-import com.example.storeelectronicsproject.homestore.viewpager.adapter.OnBoardingHotSalesAdapter
+import com.example.storeelectronicsproject.homestore.adapter.HotSalesOnBoardingAdapter
 import com.example.storeelectronicsproject.mycart.FragmentMyCart
 import com.example.storeelectronicsproject.productdetails.FragmentProductDetails
 import com.mikepenz.fastadapter.GenericFastAdapter
@@ -95,8 +95,8 @@ class FragmentHomeStore : Fragment() {
     }
 
     private fun setOnBoardingHotSalesItems() {
-        val onBoardingHotSalesAdapter = OnBoardingHotSalesAdapter(this)
-        binding.viewPagerHotSalesHomeStore.adapter = onBoardingHotSalesAdapter
+        val hotSalesOnBoardingAdapter = HotSalesOnBoardingAdapter(this)
+        binding.viewPagerHotSalesHomeStore.adapter = hotSalesOnBoardingAdapter
     }
 
     override fun onDestroyView() {

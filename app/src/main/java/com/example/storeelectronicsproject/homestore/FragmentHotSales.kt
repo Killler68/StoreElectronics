@@ -1,4 +1,4 @@
-package com.example.storeelectronicsproject.homestore.viewpager
+package com.example.storeelectronicsproject.homestore
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,7 +9,7 @@ import androidx.fragment.app.viewModels
 import com.example.storeelectronicsproject.common.flow.launchWhenViewCreated
 import com.example.storeelectronicsproject.common.fragment.getViewModelFactory
 import com.example.storeelectronicsproject.databinding.FragmentHotSalesBinding
-import com.example.storeelectronicsproject.homestore.viewpager.viewmodel.HotSalesViewModel
+import com.example.storeelectronicsproject.homestore.viewmodel.HomeStoreViewModel
 
 
 class FragmentHotSales : Fragment() {
@@ -17,7 +17,7 @@ class FragmentHotSales : Fragment() {
     private var _binding: FragmentHotSalesBinding? = null
     private val binding get() = _binding!!
 
-    private val viewModel: HotSalesViewModel by viewModels { getViewModelFactory() }
+    private val viewModel: HomeStoreViewModel by viewModels { getViewModelFactory() }
 
 
     override fun onCreateView(

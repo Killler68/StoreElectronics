@@ -2,15 +2,16 @@ package com.example.storeelectronicsproject.homestore.repository
 
 import com.example.storeelectronicsproject.homestore.model.BestSellerData
 import com.example.storeelectronicsproject.homestore.model.CategoryData
+import com.example.storeelectronicsproject.homestore.model.HotSalesData
 import com.example.storeelectronicsproject.homestore.usecase.BestSellerRepository
 import com.example.storeelectronicsproject.homestore.usecase.CategoryRepository
+import com.example.storeelectronicsproject.homestore.usecase.HotSalesRepository
 
-class HomeStoreRepositoryImpl : BestSellerRepository, CategoryRepository {
+class HomeStoreRepositoryImpl : BestSellerRepository, CategoryRepository, HotSalesRepository {
 
     override fun getBestSeller(): List<BestSellerData> = testBest
-
     override fun getCategory(): List<CategoryData> = testCategory
-
+    override fun getHotSales(): HotSalesData = testHotSales
 
 }
 
@@ -27,3 +28,5 @@ private val testCategory = listOf(
     CategoryData("Health"),
     CategoryData("Books"),
 )
+private val testHotSales =
+    HotSalesData(1, "true", "Phone 1", "Cool Phone 1", "1", "true")
