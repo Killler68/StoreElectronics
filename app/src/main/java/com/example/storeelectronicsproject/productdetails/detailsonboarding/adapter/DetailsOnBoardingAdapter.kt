@@ -1,8 +1,8 @@
-package com.example.storeelectronicsproject.productdetails.adapter
+package com.example.storeelectronicsproject.productdetails.detailsonboarding.adapter
 
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.example.storeelectronicsproject.productdetails.FragmentDetailsOnBoarding
+import com.example.storeelectronicsproject.productdetails.detailsonboarding.FragmentDetailsOnBoarding
 
 class DetailsOnBoardingAdapter(fragment: Fragment) :
     FragmentStateAdapter(fragment) {

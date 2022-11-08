@@ -1,4 +1,4 @@
-package com.example.storeelectronicsproject.productdetails
+package com.example.storeelectronicsproject.productdetails.detailsonboarding
 
 import android.os.Bundle
 import android.view.LayoutInflater

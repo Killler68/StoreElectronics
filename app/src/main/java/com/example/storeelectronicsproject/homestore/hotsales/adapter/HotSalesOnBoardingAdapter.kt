@@ -1,8 +1,8 @@
-package com.example.storeelectronicsproject.homestore.adapter
+package com.example.storeelectronicsproject.homestore.hotsales.adapter
 
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.example.storeelectronicsproject.homestore.FragmentHotSales
+import com.example.storeelectronicsproject.homestore.hotsales.FragmentHotSales
 
 class HotSalesOnBoardingAdapter(fragment: Fragment) :
     FragmentStateAdapter(fragment) {

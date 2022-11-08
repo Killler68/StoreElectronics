@@ -1,4 +1,4 @@
-package com.example.storeelectronicsproject.homestore
+package com.example.storeelectronicsproject.homestore.hotsales
 
 import android.os.Bundle
 import android.view.LayoutInflater

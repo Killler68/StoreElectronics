@@ -11,7 +11,7 @@ import com.example.storeelectronicsproject.common.flow.launchWhenViewCreated
 import com.example.storeelectronicsproject.common.fragment.getViewModelFactory
 import com.example.storeelectronicsproject.common.navigation.NavCommand
 import com.example.storeelectronicsproject.databinding.FragmentProductDetailsBinding
-import com.example.storeelectronicsproject.productdetails.adapter.DetailsOnBoardingAdapter
+import com.example.storeelectronicsproject.productdetails.detailsonboarding.adapter.DetailsOnBoardingAdapter
 import com.example.storeelectronicsproject.productdetails.model.DetailsData
 import com.example.storeelectronicsproject.productdetails.model.DetailsShopData
 import com.example.storeelectronicsproject.productdetails.viewmodel.ProductDetailsViewModel
