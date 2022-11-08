@@ -6,8 +6,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.example.storeelectronicsproject.common.flow.launchWhenViewCreated
 import com.example.storeelectronicsproject.common.fragment.getViewModelFactory
+import com.example.storeelectronicsproject.common.navigation.NavCommand
 import com.example.storeelectronicsproject.databinding.FragmentProductDetailsBinding
 import com.example.storeelectronicsproject.productdetails.adapter.DetailsOnBoardingAdapter
 import com.example.storeelectronicsproject.productdetails.model.DetailsData
@@ -34,6 +36,7 @@ class FragmentProductDetails : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         setupObservables()
         setOnBoardingHotSalesItems()
+        setupListeners()
         with(viewModel) {
             loadDetails()
             loadDetailsShop()
@@ -45,6 +48,7 @@ class FragmentProductDetails : Fragment() {
             viewModel.apply {
                 detailsData.observe(::onDataLoadedDetails)
                 detailsShopData.observe(::onDataLoadedShopDetails)
+                navCommand.observe(::onDataLoadedNavigation)
             }
         }
     }
@@ -61,11 +65,20 @@ class FragmentProductDetails : Fragment() {
         binding.textHddDetails.text = detailsShopData.sd
     }
 
+    private fun onDataLoadedNavigation(navCommand: NavCommand) {
+        findNavController().navigate(navCommand.action, navCommand.command)
+    }
+
     private fun setOnBoardingHotSalesItems() {
         val onBoardingHotSalesAdapter = DetailsOnBoardingAdapter(this)
         binding.viewPagerDetails.adapter = onBoardingHotSalesAdapter
     }
 
+    private fun setupListeners() {
+        binding.imageBackDetails.setOnClickListener {
+            viewModel.navigateToHomeStore()
+        }
+    }
 
     override fun onDestroyView() {
         super.onDestroyView()

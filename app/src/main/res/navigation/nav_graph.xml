@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/fragmentHomeStore">
+
+    <fragment
+        android:id="@+id/fragmentHomeStore"
+        android:name="com.example.storeelectronicsproject.homestore.FragmentHomeStore"
+        android:label="fragment_home_store"
+        tools:layout="@layout/fragment_home_store" >
+        <action
+            android:id="@+id/action_fragmentHomeStore_to_fragmentProductDetails"
+            app:destination="@id/fragmentProductDetails" />
+        <action
+            android:id="@+id/action_fragmentHomeStore_to_fragmentMyCart"
+            app:destination="@id/fragmentMyCart" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentMyCart"
+        android:name="com.example.storeelectronicsproject.mycart.FragmentMyCart"
+        android:label="fragment_my_cart"
+        tools:layout="@layout/fragment_my_cart" >
+        <action
+            android:id="@+id/action_fragmentMyCart_to_fragmentHomeStore2"
+            app:destination="@id/fragmentHomeStore" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentProductDetails"
+        android:name="com.example.storeelectronicsproject.productdetails.FragmentProductDetails"
+        android:label="fragment_product_details"
+        tools:layout="@layout/fragment_product_details" >
+        <action
+            android:id="@+id/action_fragmentProductDetails_to_fragmentHomeStore"
+            app:destination="@id/fragmentHomeStore" />
+    </fragment>
+</navigation>

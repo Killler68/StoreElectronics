@@ -6,9 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.example.storeelectronicsproject.common.flow.launchWhenViewCreated
 import com.example.storeelectronicsproject.common.fragment.getViewModelFactory
 import com.example.storeelectronicsproject.common.fragment.navigateToFragment
+import com.example.storeelectronicsproject.common.navigation.NavCommand
 import com.example.storeelectronicsproject.databinding.FragmentHomeStoreBinding
 import com.example.storeelectronicsproject.homestore.model.BestSellerData
 import com.example.storeelectronicsproject.homestore.model.CategoryData
@@ -61,6 +63,7 @@ class FragmentHomeStore : Fragment() {
             launchWhenViewCreated {
                 data.observe(::onDataLoadedBestSeller)
                 categoryData.observe(::onDataLoadedCategory)
+                navCommand.observe(::onDataLoadedNavigation)
             }
         }
     }
@@ -73,12 +76,16 @@ class FragmentHomeStore : Fragment() {
         FastAdapterDiffUtil[categoryItemItemAdapter] = categoryData.map { CategoryItem(it) }
     }
 
+    private fun onDataLoadedNavigation(navCommand: NavCommand) {
+        findNavController().navigate(navCommand.action, navCommand.command)
+    }
+
     private fun setupListeners() {
         binding.textNameCategoryHomeStore.setOnClickListener {
-            navigateToFragment(FragmentProductDetails())
+            viewModel.navigateToProductDescription()
         }
         binding.imageView10.setOnClickListener {
-            navigateToFragment(FragmentMyCart())
+            viewModel.navigateToMyCart()
         }
 
     }

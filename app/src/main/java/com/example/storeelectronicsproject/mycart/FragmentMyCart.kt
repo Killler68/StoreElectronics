@@ -6,11 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.example.storeelectronicsproject.common.flow.launchWhenViewCreated
 import com.example.storeelectronicsproject.common.fragment.getViewModelFactory
-import com.example.storeelectronicsproject.common.fragment.navigateToFragment
+import com.example.storeelectronicsproject.common.navigation.NavCommand
 import com.example.storeelectronicsproject.databinding.FragmentMyCartBinding
-import com.example.storeelectronicsproject.homestore.FragmentHomeStore
 import com.example.storeelectronicsproject.mycart.model.BasketData
 import com.example.storeelectronicsproject.mycart.model.MyCartData
 import com.example.storeelectronicsproject.mycart.viewholder.BasketItem
@@ -52,10 +52,12 @@ class FragmentMyCart : Fragment() {
 
     private fun setupObservables() {
         launchWhenViewCreated {
-            viewModel.basket.observe(::onDataLoadedBasket)
-            viewModel.myCart.observe(::onDataLoadedMyCart)
+            with(viewModel) {
+                basket.observe(::onDataLoadedBasket)
+                myCart.observe(::onDataLoadedMyCart)
+                navCommand.observe(::onDataLoadedNavigation)
+            }
         }
-
     }
 
     private fun onDataLoadedBasket(basketData: List<BasketData>) {
@@ -67,9 +69,14 @@ class FragmentMyCart : Fragment() {
         binding.textDeliveryMyCart.text = myCartData.delivery
     }
 
+    private fun onDataLoadedNavigation(navCommand: NavCommand) {
+        findNavController().navigate(navCommand.action, navCommand.command)
+    }
+
+
     private fun setupListeners() {
         binding.imageBackMyCart.setOnClickListener {
-            navigateToFragment(FragmentHomeStore())
+            viewModel.navigationToHomeStore()
         }
     }
 }

@@ -2,11 +2,9 @@ package com.example.storeelectronicsproject.productdetails
 
 import androidx.lifecycle.ViewModel
 import com.example.storeelectronicsproject.productdetails.repository.DetailsRepositoryImpl
+import com.example.storeelectronicsproject.productdetails.router.ProductDetailsRouterImpl
 import com.example.storeelectronicsproject.productdetails.usecase.*
-import com.example.storeelectronicsproject.productdetails.viewmodel.DetailsOnBoardingUseCase
-import com.example.storeelectronicsproject.productdetails.viewmodel.DetailsShopUseCase
-import com.example.storeelectronicsproject.productdetails.viewmodel.DetailsUseCase
-import com.example.storeelectronicsproject.productdetails.viewmodel.ProductDetailsViewModel
+import com.example.storeelectronicsproject.productdetails.viewmodel.*
 import dagger.Module
 import dagger.Provides
 import dagger.multibindings.ClassKey
@@ -38,13 +36,26 @@ class ProductDetailsModule {
             DetailsOnBoardingUseCase = DetailsOnBoardingUseCaseImpl(repository)
 
     @Provides
+    fun provideDetailsRouter(): DetailsRouter = ProductDetailsRouterImpl()
+
+    @Provides
+    fun provideDetailsHomeStoreNavigatorUseCase(router: DetailsRouter):
+            DetailsHomeStoreNavigatorUseCase = DetailsHomeStoreNavigatorUseCaseImpl(router)
+
+    @Provides
     @IntoMap
     @ClassKey(ProductDetailsViewModel::class)
     fun provideProductDetailsViewModel(
         detailsUseCase: DetailsUseCase,
         shopUseCase: DetailsShopUseCase,
-        onBoardingUseCase: DetailsOnBoardingUseCase
+        onBoardingUseCase: DetailsOnBoardingUseCase,
+        navigatorHomeStoreUseCase: DetailsHomeStoreNavigatorUseCase
     ): ViewModel {
-        return ProductDetailsViewModel(detailsUseCase, shopUseCase, onBoardingUseCase)
+        return ProductDetailsViewModel(
+            detailsUseCase,
+            shopUseCase,
+            onBoardingUseCase,
+            navigatorHomeStoreUseCase
+        )
     }
 }

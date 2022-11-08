@@ -1,17 +1,19 @@
 package com.example.storeelectronicsproject.homestore.viewmodel
 
 import androidx.lifecycle.ViewModel
+import com.example.storeelectronicsproject.common.flow.createSharedFlow
+import com.example.storeelectronicsproject.common.navigation.NavCommand
 import com.example.storeelectronicsproject.homestore.model.BestSellerData
 import com.example.storeelectronicsproject.homestore.model.CategoryData
 import com.example.storeelectronicsproject.homestore.model.HotSalesData
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.*
 
 class HomeStoreViewModel(
     private val getBestSeller: BestSellerUseCase,
     private val getCategory: CategoryUseCase,
-    private val getHotSales: HotSalesUseCase
+    private val getHotSales: HotSalesUseCase,
+    private val navigatorDescription: HomeStoreProductDescriptionNavigatorUseCase,
+    private val navigatorMyCart: HomeStoreMyCartNavigatorUseCase
 ) : ViewModel() {
 
     private var _data: MutableStateFlow<List<BestSellerData>> = MutableStateFlow(emptyList())
@@ -24,6 +26,9 @@ class HomeStoreViewModel(
         MutableStateFlow(HotSalesData(1, "", "", "", "", ""))
     val hotSales: StateFlow<HotSalesData> get() = _hotSales.asStateFlow()
 
+    private val _navCommand: MutableSharedFlow<NavCommand> = createSharedFlow()
+    val navCommand: SharedFlow<NavCommand> get() = _navCommand.asSharedFlow()
+
     fun loadBestSeller() {
         _data.tryEmit(getBestSeller())
     }
@@ -34,6 +39,14 @@ class HomeStoreViewModel(
 
     fun loadHotSales() {
         _hotSales.tryEmit(getHotSales())
+    }
+
+    fun navigateToProductDescription() {
+        _navCommand.tryEmit(navigatorDescription())
+    }
+
+    fun navigateToMyCart() {
+        _navCommand.tryEmit(navigatorMyCart())
     }
 
 }

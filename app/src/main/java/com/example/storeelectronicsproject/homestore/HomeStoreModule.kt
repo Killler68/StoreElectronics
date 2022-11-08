@@ -2,11 +2,9 @@ package com.example.storeelectronicsproject.homestore
 
 import androidx.lifecycle.ViewModel
 import com.example.storeelectronicsproject.homestore.repository.HomeStoreRepositoryImpl
+import com.example.storeelectronicsproject.homestore.router.HomeStoreRouterImpl
 import com.example.storeelectronicsproject.homestore.usecase.*
-import com.example.storeelectronicsproject.homestore.viewmodel.BestSellerUseCase
-import com.example.storeelectronicsproject.homestore.viewmodel.CategoryUseCase
-import com.example.storeelectronicsproject.homestore.viewmodel.HomeStoreViewModel
-import com.example.storeelectronicsproject.homestore.viewmodel.HotSalesUseCase
+import com.example.storeelectronicsproject.homestore.viewmodel.*
 import dagger.Module
 import dagger.Provides
 import dagger.multibindings.ClassKey
@@ -37,14 +35,34 @@ class HomeStoreModule {
         HotSalesUseCaseImpl(repository)
 
     @Provides
+    fun provideHomeStoreRouter(): HomeStoreRouter = HomeStoreRouterImpl()
+
+    @Provides
+    fun provideHomeStoreProductDescriptionNavigatorUseCase(router: HomeStoreRouter):
+            HomeStoreProductDescriptionNavigatorUseCase =
+        HomeStoreProductDescriptionNavigatorUseCaseImpl(router)
+
+    @Provides
+    fun provideHomeStoreMyCartNavigatorUseCase(router: HomeStoreRouter):
+            HomeStoreMyCartNavigatorUseCase = HomeStoreMyCartNavigatorUseCaseImpl(router)
+
+    @Provides
     @IntoMap
     @ClassKey(HomeStoreViewModel::class)
     fun provideHomeStoreViewModel(
         bestSellerUseCase: BestSellerUseCase,
         categoryUseCase: CategoryUseCase,
-        hotSalesUseCase: HotSalesUseCase
+        hotSalesUseCase: HotSalesUseCase,
+        navigatorDescriptionUseCase: HomeStoreProductDescriptionNavigatorUseCase,
+        navigatorMyCartUseCase: HomeStoreMyCartNavigatorUseCase
 
     ): ViewModel {
-        return HomeStoreViewModel(bestSellerUseCase, categoryUseCase, hotSalesUseCase)
+        return HomeStoreViewModel(
+            bestSellerUseCase,
+            categoryUseCase,
+            hotSalesUseCase,
+            navigatorDescriptionUseCase,
+            navigatorMyCartUseCase
+        )
     }
 }
