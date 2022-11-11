@@ -38,7 +38,7 @@
 
         <TextView
             android:layout_width="0dp"
-            android:layout_height="23dp"
+            android:layout_height="wrap_content"
             android:layout_marginHorizontal="10dp"
             android:layout_marginTop="14dp"
             android:gravity="center"
@@ -52,11 +52,10 @@
         <Button
             android:id="@+id/btn_done_filter"
             android:layout_width="0dp"
-            android:layout_height="37dp"
-            android:layout_marginTop="8dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
             android:layout_marginEnd="20dp"
             android:backgroundTint="#FF6E4E"
-            android:scaleY="1.5"
             android:text="Done"
             android:textAllCaps="false"
             android:textColor="@color/white"
@@ -68,7 +67,7 @@
         <TextView
             android:id="@+id/text_brand_filter"
             android:layout_width="0dp"
-            android:layout_height="20dp"
+            android:layout_height="wrap_content"
             android:layout_marginStart="46dp"
             android:layout_marginTop="12dp"
             android:backgroundTint="@color/white"
@@ -97,7 +96,7 @@
 
                 <EditText
                     android:id="@+id/edit_brand_filter"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:background="@null"
@@ -125,7 +124,7 @@
         <TextView
             android:id="@+id/text_price_filter"
             android:layout_width="0dp"
-            android:layout_height="20dp"
+            android:layout_height="wrap_content"
             android:layout_marginStart="46dp"
             android:layout_marginTop="12dp"
             android:backgroundTint="@color/white"
@@ -182,7 +181,7 @@
         <TextView
             android:id="@+id/text_size_filter"
             android:layout_width="0dp"
-            android:layout_height="20dp"
+            android:layout_height="wrap_content"
             android:layout_marginStart="46dp"
             android:layout_marginTop="12dp"
             android:backgroundTint="@color/white"

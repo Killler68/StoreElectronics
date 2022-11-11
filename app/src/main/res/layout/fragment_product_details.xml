@@ -21,7 +21,7 @@
         android:layout_width="0dp"
         android:layout_height="14dp"
         android:layout_marginStart="56dp"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="20dp"
         android:scaleType="center"
         android:src="@drawable/image_back"
         app:layout_constraintStart_toStartOf="parent"
@@ -29,16 +29,14 @@
 
     <TextView
         android:layout_width="0dp"
-        android:layout_height="23dp"
-        android:layout_marginStart="51dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="79dp"
         android:gravity="center"
         android:text="Product Details"
         android:textColor="#010035"
         android:textSize="18sp"
-        app:layout_constraintEnd_toStartOf="@+id/image_store_details"
-        app:layout_constraintStart_toEndOf="@+id/image_back_details"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
@@ -56,7 +54,7 @@
     <ImageView
         android:layout_width="0dp"
         android:layout_height="14dp"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="44dp"
         android:src="@drawable/image_store"
         app:layout_constraintEnd_toEndOf="parent"
@@ -65,7 +63,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_details"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="150dp"
         android:layout_marginTop="30dp"
         android:orientation="horizontal"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
@@ -91,12 +89,14 @@
             <TextView
                 android:id="@+id/text_name_phone_details"
                 android:layout_width="0dp"
-                android:layout_height="30dp"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="38dp"
                 android:layout_marginTop="28dp"
+                android:layout_marginEnd="10dp"
                 android:text="Galaxy Note 20 Ultra"
                 android:textColor="#010035"
-                android:textSize="24sp"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toStartOf="@+id/image_favorite_details"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -133,25 +133,26 @@
             <TextView
                 android:id="@+id/text_shop_details"
                 android:layout_width="0dp"
-                android:layout_height="25dp"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="45dp"
                 android:layout_marginTop="32dp"
                 android:text="Shop"
                 android:textColor="#010035"
-                android:textSize="20sp"
+                android:textSize="16sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/rating_bar_details" />
 
             <TextView
                 android:id="@+id/text_details"
                 android:layout_width="0dp"
-                android:layout_height="25dp"
-                android:layout_marginStart="69dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
                 android:layout_marginTop="32dp"
-                android:layout_marginEnd="60dp"
+                android:layout_marginEnd="10dp"
+                android:gravity="center"
                 android:text="Details"
                 android:textColor="#010035"
-                android:textSize="20sp"
+                android:textSize="16sp"
                 app:layout_constraintEnd_toStartOf="@+id/text_features_details"
                 app:layout_constraintStart_toEndOf="@id/text_shop_details"
                 app:layout_constraintTop_toBottomOf="@+id/rating_bar_details" />
@@ -159,13 +160,12 @@
             <TextView
                 android:id="@+id/text_features_details"
                 android:layout_width="0dp"
-                android:layout_height="25dp"
-                android:layout_marginStart="45dp"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="32dp"
                 android:layout_marginEnd="40dp"
                 android:text="Features"
                 android:textColor="#010035"
-                android:textSize="20sp"
+                android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/rating_bar_details" />
 
@@ -175,7 +175,7 @@
                 android:layout_height="2dp"
                 android:layout_marginStart="27dp"
                 android:layout_marginTop="8dp"
-                android:layout_marginEnd="301dp"
+                android:layout_marginEnd="250dp"
                 android:background="#FF6E4E"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -185,7 +185,7 @@
                 android:id="@+id/image_processor_details"
                 android:layout_width="0dp"
                 android:layout_height="28dp"
-                android:layout_marginStart="45dp"
+                android:layout_marginStart="35dp"
                 android:layout_marginTop="33dp"
                 android:src="@drawable/image_processor"
                 app:layout_constraintEnd_toStartOf="@+id/image_camera_details"
@@ -196,7 +196,7 @@
                 android:id="@+id/image_camera_details"
                 android:layout_width="0dp"
                 android:layout_height="28dp"
-                android:layout_marginStart="74dp"
+                android:layout_marginStart="54dp"
                 android:layout_marginTop="33dp"
                 android:src="@drawable/image_camera"
                 app:layout_constraintEnd_toStartOf="@+id/image_ram_details"
@@ -207,7 +207,7 @@
                 android:id="@+id/image_ram_details"
                 android:layout_width="0dp"
                 android:layout_height="28dp"
-                android:layout_marginStart="64dp"
+                android:layout_marginStart="44dp"
                 android:layout_marginTop="33dp"
                 android:src="@drawable/image_ram"
                 app:layout_constraintEnd_toStartOf="@+id/image_hdd_details"
@@ -218,9 +218,9 @@
                 android:id="@+id/image_hdd_details"
                 android:layout_width="0dp"
                 android:layout_height="28dp"
-                android:layout_marginStart="68dp"
+                android:layout_marginStart="48dp"
                 android:layout_marginTop="33dp"
-                android:layout_marginEnd="60dp"
+                android:layout_marginEnd="40dp"
                 android:src="@drawable/image_hdd"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/image_ram_details"
@@ -229,60 +229,65 @@
             <TextView
                 android:id="@+id/text_processor_details"
                 android:layout_width="0dp"
-                android:layout_height="14dp"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="30dp"
                 android:layout_marginTop="5dp"
                 android:gravity="center"
                 android:text="Exynos 990"
                 android:textColor="#B7B7B7"
-                android:textSize="11sp"
+                android:textSize="10sp"
+                app:layout_constraintBottom_toTopOf="@+id/select_color_details"
+                app:layout_constraintEnd_toStartOf="@+id/text_camera_details"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/image_processor_details" />
 
             <TextView
                 android:id="@+id/text_camera_details"
                 android:layout_width="0dp"
-                android:layout_height="14dp"
-                android:layout_marginStart="36dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="50dp"
                 android:layout_marginTop="5dp"
                 android:gravity="center"
                 android:text="108 + 12 mp"
                 android:textColor="#B7B7B7"
-                android:textSize="11sp"
+                android:textSize="10sp"
+                app:layout_constraintEnd_toStartOf="@+id/text_ram_details"
                 app:layout_constraintStart_toEndOf="@id/text_processor_details"
                 app:layout_constraintTop_toBottomOf="@+id/image_camera_details" />
 
             <TextView
                 android:id="@+id/text_ram_details"
                 android:layout_width="0dp"
-                android:layout_height="14dp"
-                android:layout_marginStart="42dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="36dp"
                 android:layout_marginTop="5dp"
                 android:gravity="center"
                 android:text="8 GB"
                 android:textColor="#B7B7B7"
-                android:textSize="11sp"
+                android:textSize="10sp"
+                app:layout_constraintEnd_toStartOf="@id/text_hdd_details"
                 app:layout_constraintStart_toEndOf="@id/text_camera_details"
                 app:layout_constraintTop_toBottomOf="@+id/image_ram_details" />
 
             <TextView
                 android:id="@+id/text_hdd_details"
                 android:layout_width="0dp"
-                android:layout_height="14dp"
-                android:layout_marginStart="60dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="40dp"
                 android:layout_marginTop="5dp"
                 android:layout_marginEnd="40dp"
                 android:gravity="center"
                 android:text="256 GB"
                 android:textColor="#B7B7B7"
-                android:textSize="11sp"
+                android:textSize="10sp"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/text_ram_details"
                 app:layout_constraintTop_toBottomOf="@+id/image_hdd_details" />
 
             <TextView
                 android:id="@+id/select_color_details"
                 android:layout_width="0dp"
-                android:layout_height="21dp"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="30dp"
                 android:layout_marginTop="29dp"
                 android:text="Select color  and capacity"
@@ -312,16 +317,29 @@
                 app:layout_constraintTop_toBottomOf="@id/select_color_details" />
 
             <ImageView
+                android:id="@+id/image_color_one_details"
                 android:layout_width="0dp"
                 android:layout_height="12dp"
-                android:layout_marginStart="47dp"
-                android:layout_marginTop="28dp"
                 android:src="@drawable/image_selected"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/select_color_details" />
+                app:layout_constraintBottom_toTopOf="@+id/image_background_color_one_details"
+                app:layout_constraintEnd_toEndOf="@+id/image_background_color_one_details"
+                app:layout_constraintStart_toStartOf="@+id/image_background_color_one_details"
+                app:layout_constraintTop_toBottomOf="@+id/image_background_color_one_details" />
 
             <ImageView
-                android:id="@+id/image_background_capacity_details"
+                android:id="@+id/image_color_two_details"
+                android:layout_width="0dp"
+                android:layout_height="12dp"
+                android:src="@drawable/image_selected"
+                android:visibility="gone"
+                app:layout_constraintBottom_toTopOf="@+id/image_background_color_two_details"
+                app:layout_constraintEnd_toEndOf="@+id/image_background_color_two_details"
+                app:layout_constraintStart_toStartOf="@+id/image_background_color_two_details"
+                app:layout_constraintTop_toBottomOf="@+id/image_background_color_two_details" />
+
+
+            <ImageView
+                android:id="@+id/image_background_capacity_details_true"
                 android:layout_width="0dp"
                 android:layout_height="30dp"
                 android:layout_marginStart="58dp"
@@ -333,28 +351,39 @@
             <TextView
                 android:id="@+id/text_capacity_details"
                 android:layout_width="0dp"
-                android:layout_height="16dp"
-                android:layout_marginStart="74dp"
-                android:layout_marginTop="24dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
                 android:text="128 GB"
                 android:textColor="#FFFFFF"
                 android:textSize="13sp"
-                app:layout_constraintStart_toEndOf="@+id/image_background_color_two_details"
-                app:layout_constraintTop_toBottomOf="@+id/select_color_details" />
+                app:layout_constraintBottom_toTopOf="@+id/image_background_capacity_details_true"
+                app:layout_constraintEnd_toEndOf="@+id/image_background_capacity_details_true"
+                app:layout_constraintStart_toStartOf="@+id/image_background_capacity_details_true"
+                app:layout_constraintTop_toBottomOf="@+id/image_background_capacity_details_true" />
+
+            <ImageView
+                android:id="@+id/image_background_capacity_details_false"
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="17dp"
+                android:src="@drawable/image_background_capacity"
+                app:layout_constraintStart_toEndOf="@+id/image_background_capacity_details_true"
+                app:layout_constraintTop_toBottomOf="@id/select_color_details"
+                app:tint="@color/white" />
+
 
             <TextView
                 android:layout_width="0dp"
-                android:layout_height="16dp"
-                android:layout_marginStart="21dp"
-                android:layout_marginTop="25sp"
-                android:layout_marginEnd="63dp"
+                android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="256 gb"
                 android:textColor="#8D8D8D"
                 android:textSize="13sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/image_background_capacity_details"
-                app:layout_constraintTop_toBottomOf="@id/select_color_details" />
+                app:layout_constraintBottom_toTopOf="@+id/image_background_capacity_details_false"
+                app:layout_constraintEnd_toEndOf="@+id/image_background_capacity_details_false"
+                app:layout_constraintStart_toStartOf="@+id/image_background_capacity_details_false"
+                app:layout_constraintTop_toBottomOf="@+id/image_background_capacity_details_false"  />
 
             <androidx.cardview.widget.CardView
                 android:layout_width="0dp"

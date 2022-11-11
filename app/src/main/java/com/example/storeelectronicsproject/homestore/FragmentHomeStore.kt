@@ -92,7 +92,7 @@ class FragmentHomeStore : Fragment() {
     }
 
     private fun setupListeners() {
-        binding.imageView10.setOnClickListener {
+        binding.imageStore.setOnClickListener {
             viewModel.navigateToMyCart()
         }
         binding.imageFilterHomeStore.setOnClickListener {
