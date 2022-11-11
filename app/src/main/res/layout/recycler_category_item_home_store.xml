@@ -27,8 +27,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/vector"
-        />
+        app:srcCompat="@drawable/image_category_telephone"
+        app:tint="#B3B3C3" />
 
     <TextView
         android:id="@+id/text_name_category_item"
