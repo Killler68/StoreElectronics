@@ -62,14 +62,17 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.viewpager2.widget.ViewPager2
-        android:id="@+id/view_pager_details"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_details"
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:layout_marginTop="30dp"
+        android:orientation="horizontal"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/image_back_details" />
+        app:layout_constraintTop_toBottomOf="@id/image_back_details"
+        tools:listitem="@layout/recycler_item_details" />
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
@@ -79,7 +82,7 @@
         app:cardElevation="0dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/view_pager_details">
+        app:layout_constraintTop_toBottomOf="@id/recycler_details">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"

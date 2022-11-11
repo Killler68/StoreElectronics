@@ -21,7 +21,7 @@ class ProductDetailsModule {
     fun provideDetailsShopRepository(storeApi: StoreApi): DetailsShopRepository = DetailsRepositoryImpl(storeApi)
 
     @Provides
-    fun provideDetailsOnBoardingRepository(storeApi: StoreApi): DetailsOnBoardingRepository =
+    fun provideDetailsOnBoardingRepository(storeApi: StoreApi): DetailsImagesRepository =
         DetailsRepositoryImpl(storeApi)
 
     @Provides
@@ -33,8 +33,8 @@ class ProductDetailsModule {
         DetailsShopUseCaseImpl(repository)
 
     @Provides
-    fun provideDetailsOnBoardingUseCase(repository: DetailsOnBoardingRepository):
-            DetailsOnBoardingUseCase = DetailsOnBoardingUseCaseImpl(repository)
+    fun provideDetailsImagesUseCase(repository: DetailsImagesRepository):
+            DetailsImagesUseCase = DetailsImagesUseCaseImpl(repository)
 
     @Provides
     fun provideDetailsRouter(): DetailsRouter = ProductDetailsRouterImpl()
@@ -49,13 +49,13 @@ class ProductDetailsModule {
     fun provideProductDetailsViewModel(
         detailsUseCase: DetailsUseCase,
         shopUseCase: DetailsShopUseCase,
-        onBoardingUseCase: DetailsOnBoardingUseCase,
+        imagesUseCase: DetailsImagesUseCase,
         navigatorHomeStoreUseCase: DetailsHomeStoreNavigatorUseCase
     ): ViewModel {
         return ProductDetailsViewModel(
             detailsUseCase,
             shopUseCase,
-            onBoardingUseCase,
+            imagesUseCase,
             navigatorHomeStoreUseCase
         )
     }

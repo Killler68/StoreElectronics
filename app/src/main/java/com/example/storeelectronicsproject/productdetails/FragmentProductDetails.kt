@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -11,10 +12,14 @@ import com.example.storeelectronicsproject.common.flow.launchWhenViewCreated
 import com.example.storeelectronicsproject.common.fragment.getViewModelFactory
 import com.example.storeelectronicsproject.common.navigation.NavCommand
 import com.example.storeelectronicsproject.databinding.FragmentProductDetailsBinding
-import com.example.storeelectronicsproject.productdetails.detailsonboarding.adapter.DetailsOnBoardingAdapter
 import com.example.storeelectronicsproject.productdetails.model.DetailsData
+import com.example.storeelectronicsproject.productdetails.model.DetailsImagesData
 import com.example.storeelectronicsproject.productdetails.model.DetailsShopData
+import com.example.storeelectronicsproject.productdetails.viewholder.DetailsImagesItem
 import com.example.storeelectronicsproject.productdetails.viewmodel.ProductDetailsViewModel
+import com.mikepenz.fastadapter.GenericFastAdapter
+import com.mikepenz.fastadapter.adapters.ItemAdapter
+import com.mikepenz.fastadapter.diff.FastAdapterDiffUtil
 
 
 const val KEY = "key"
@@ -27,6 +32,9 @@ class FragmentProductDetails : Fragment() {
 
     private val viewModel: ProductDetailsViewModel by viewModels { getViewModelFactory() }
 
+    private val imagesItemAdapter = ItemAdapter<DetailsImagesItem>()
+    private val fastAdapter = GenericFastAdapter.with(listOf(imagesItemAdapter))
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -38,12 +46,18 @@ class FragmentProductDetails : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val arguments = requireArguments().getInt(KEY)
 
+        with(binding.recyclerDetails) {
+            adapter = fastAdapter
+            itemAnimator = null
+        }
+
+
         setupObservables()
-        setOnBoardingHotSalesItems()
         setupListeners()
         with(viewModel) {
             loadDetails(arguments)
             loadDetailsShop()
+            loadDetailsImages()
         }
     }
 
@@ -52,7 +66,11 @@ class FragmentProductDetails : Fragment() {
             viewModel.apply {
                 details.observe(::onDataLoadedDetails)
                 detailsShop.observe(::onDataLoadedShopDetails)
+                detailsImages.observe(::onDataLoadedImages)
                 navCommand.observe(::onDataLoadedNavigation)
+                screenState.observe(viewLifecycleOwner) {
+                    Toast.makeText(context, it, Toast.LENGTH_LONG).show()
+                }
             }
         }
     }
@@ -70,13 +88,12 @@ class FragmentProductDetails : Fragment() {
         binding.textHddDetails.text = detailsShopData.sd
     }
 
-    private fun onDataLoadedNavigation(navCommand: NavCommand) {
-        findNavController().navigate(navCommand.action, navCommand.command)
+    private fun onDataLoadedImages(detailsImagesData: List<DetailsImagesData>) {
+        FastAdapterDiffUtil[imagesItemAdapter] = detailsImagesData.map { DetailsImagesItem(it) }
     }
 
-    private fun setOnBoardingHotSalesItems() {
-        val onBoardingHotSalesAdapter = DetailsOnBoardingAdapter(this)
-        binding.viewPagerDetails.adapter = onBoardingHotSalesAdapter
+    private fun onDataLoadedNavigation(navCommand: NavCommand) {
+        findNavController().navigate(navCommand.action, navCommand.command)
     }
 
     private fun setupListeners() {

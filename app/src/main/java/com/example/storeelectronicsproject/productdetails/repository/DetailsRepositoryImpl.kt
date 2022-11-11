@@ -2,9 +2,9 @@ package com.example.storeelectronicsproject.productdetails.repository
 
 import com.example.storeelectronicsproject.common.api.StoreApi
 import com.example.storeelectronicsproject.productdetails.model.DetailsData
-import com.example.storeelectronicsproject.productdetails.model.DetailsOnBoardingData
+import com.example.storeelectronicsproject.productdetails.model.DetailsImagesData
 import com.example.storeelectronicsproject.productdetails.model.DetailsShopData
-import com.example.storeelectronicsproject.productdetails.usecase.DetailsOnBoardingRepository
+import com.example.storeelectronicsproject.productdetails.usecase.DetailsImagesRepository
 import com.example.storeelectronicsproject.productdetails.usecase.DetailsRepository
 import com.example.storeelectronicsproject.productdetails.usecase.DetailsShopRepository
 import io.reactivex.Single
@@ -12,7 +12,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 
 class DetailsRepositoryImpl(private val storeApi: StoreApi) :
-    DetailsRepository, DetailsShopRepository, DetailsOnBoardingRepository {
+    DetailsRepository, DetailsShopRepository, DetailsImagesRepository {
 
     override fun getDetailsShop(): Single<DetailsShopData> {
         try {
@@ -53,15 +53,17 @@ class DetailsRepositoryImpl(private val storeApi: StoreApi) :
         }
     }
 
-    override fun getDetailsOnBoarding(): Single<DetailsOnBoardingData> {
+    override fun getDetailsImages(): Single<List<DetailsImagesData>> {
         try {
             val response = storeApi.getProductDetails()
             return response.map {
-                DetailsOnBoardingData(
-                    it.id,
-                    it.images
-                )
+                it.images.map {
+                    DetailsImagesData(
+                        listOf(it)
+                    )
+                }
             }
+
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
         } catch (e: Exception) {

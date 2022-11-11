@@ -7,7 +7,7 @@ import com.example.coinproject.common.rx.plusAssign
 import com.example.storeelectronicsproject.common.flow.createSharedFlow
 import com.example.storeelectronicsproject.common.navigation.NavCommand
 import com.example.storeelectronicsproject.productdetails.model.DetailsData
-import com.example.storeelectronicsproject.productdetails.model.DetailsOnBoardingData
+import com.example.storeelectronicsproject.productdetails.model.DetailsImagesData
 import com.example.storeelectronicsproject.productdetails.model.DetailsShopData
 import io.reactivex.disposables.CompositeDisposable
 import kotlinx.coroutines.flow.*
@@ -15,7 +15,7 @@ import kotlinx.coroutines.flow.*
 class ProductDetailsViewModel(
     private val getDetails: DetailsUseCase,
     private val getDetailsShop: DetailsShopUseCase,
-    private val getDetailsOnBoarding: DetailsOnBoardingUseCase,
+    private val getDetailsOnBoarding: DetailsImagesUseCase,
     private val navigatorHomeStore: DetailsHomeStoreNavigatorUseCase
 ) : ViewModel() {
 
@@ -27,9 +27,8 @@ class ProductDetailsViewModel(
         MutableStateFlow(DetailsShopData("", "", "", ""))
     val detailsShop: StateFlow<DetailsShopData> get() = _detailsShop.asStateFlow()
 
-    private var _detailsOnBoarding: MutableStateFlow<DetailsOnBoardingData> =
-        MutableStateFlow(DetailsOnBoardingData("", emptyList()))
-    val detailsOnBoarding: StateFlow<DetailsOnBoardingData> get() = _detailsOnBoarding.asStateFlow()
+    private var _detailsImages: MutableStateFlow<List<DetailsImagesData>> = MutableStateFlow(emptyList())
+    val detailsImages: StateFlow<List<DetailsImagesData>> get() = _detailsImages.asStateFlow()
 
     private val _navCommand: MutableSharedFlow<NavCommand> = createSharedFlow()
     val navCommand: SharedFlow<NavCommand> get() = _navCommand.asSharedFlow()
@@ -57,10 +56,10 @@ class ProductDetailsViewModel(
             })
     }
 
-    fun loadDetailsOnBoarding(id: Int) {
+    fun loadDetailsImages() {
         compositeDisposable += getDetailsOnBoarding()
             .subscribe({
-                _detailsOnBoarding.tryEmit(it)
+                _detailsImages.tryEmit(it)
             }, {
                 _screenState.postValue(it.toString())
             })
