@@ -16,13 +16,16 @@ import dagger.multibindings.IntoMap
 class HomeStoreModule {
 
     @Provides
-    fun provideBestSellerRepository(storeApi: StoreApi): BestSellerRepository = HomeStoreRepositoryImpl(storeApi)
+    fun provideBestSellerRepository(storeApi: StoreApi): BestSellerRepository =
+        HomeStoreRepositoryImpl(storeApi)
 
     @Provides
-    fun provideCategoryRepository(storeApi: StoreApi): CategoryRepository = HomeStoreRepositoryImpl(storeApi)
+    fun provideCategoryRepository(storeApi: StoreApi): CategoryRepository =
+        HomeStoreRepositoryImpl(storeApi)
 
     @Provides
-    fun provideHotSalesRepository(storeApi: StoreApi): HotSalesRepository = HomeStoreRepositoryImpl(storeApi)
+    fun provideHotSalesRepository(storeApi: StoreApi): HotSalesRepository =
+        HomeStoreRepositoryImpl(storeApi)
 
     @Provides
     fun provideBestSellerUseCase(repository: BestSellerRepository): BestSellerUseCase =
@@ -33,8 +36,16 @@ class HomeStoreModule {
         CategoryUseCaseImpl(repository)
 
     @Provides
+    fun provideCategorySelectUseCase(repository: CategoryRepository): CategorySelectUseCase =
+        CategorySelectUseCaseImpl(repository)
+
+    @Provides
     fun provideHotSalesUseCase(repository: HotSalesRepository): HotSalesUseCase =
         HotSalesUseCaseImpl(repository)
+
+    @Provides
+    fun provideHotSaleUseCase(repository: HotSalesRepository): HotSaleUseCase =
+        HotSaleUseCaseImpl(repository)
 
     @Provides
     fun provideHomeStoreRouter(): HomeStoreRouter = HomeStoreRouterImpl()
@@ -54,7 +65,9 @@ class HomeStoreModule {
     fun provideHomeStoreViewModel(
         bestSellerUseCase: BestSellerUseCase,
         categoryUseCase: CategoryUseCase,
+        categorySelectUseCase: CategorySelectUseCase,
         hotSalesUseCase: HotSalesUseCase,
+        hotSaleUseCase: HotSaleUseCase,
         navigatorDescriptionUseCase: HomeStoreProductDescriptionNavigatorUseCase,
         navigatorMyCartUseCase: HomeStoreMyCartNavigatorUseCase
 
@@ -62,7 +75,9 @@ class HomeStoreModule {
         return HomeStoreViewModel(
             bestSellerUseCase,
             categoryUseCase,
+            categorySelectUseCase,
             hotSalesUseCase,
+            hotSaleUseCase,
             navigatorDescriptionUseCase,
             navigatorMyCartUseCase
         )

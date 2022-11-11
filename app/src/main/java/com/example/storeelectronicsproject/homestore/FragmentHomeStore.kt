@@ -8,15 +8,14 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import com.example.storeelectronicsproject.R
 import com.example.storeelectronicsproject.common.flow.launchWhenViewCreated
 import com.example.storeelectronicsproject.common.fragment.getViewModelFactory
 import com.example.storeelectronicsproject.common.navigation.NavCommand
 import com.example.storeelectronicsproject.databinding.FragmentHomeStoreBinding
-import com.example.storeelectronicsproject.homestore.filteroptions.FragmentFilterOptions
 import com.example.storeelectronicsproject.homestore.hotsales.adapter.HotSalesOnBoardingAdapter
 import com.example.storeelectronicsproject.homestore.model.BestSellerData
 import com.example.storeelectronicsproject.homestore.model.CategoryData
+import com.example.storeelectronicsproject.homestore.model.HotSalesData
 import com.example.storeelectronicsproject.homestore.viewholder.BestSellerItem
 import com.example.storeelectronicsproject.homestore.viewholder.CategoryItem
 import com.example.storeelectronicsproject.homestore.viewmodel.HomeStoreViewModel
@@ -48,13 +47,19 @@ class FragmentHomeStore : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        fastAdapterCategory.onClickListener = { _, _, item, position ->
+            viewModel.loadCategorySelect(position)
+            true
+        }
+
+
         createFastAdapter()
         setupObservables()
         setupListeners()
-        setOnBoardingHotSalesItems()
         with(viewModel) {
             loadBestSeller()
             loadCategory()
+            loadHotSales()
         }
     }
 
@@ -64,6 +69,7 @@ class FragmentHomeStore : Fragment() {
                 data.observe(::onDataLoadedBestSeller)
                 categoryData.observe(::onDataLoadedCategory)
                 navCommand.observe(::onDataLoadedNavigation)
+                hotSales.observe(::setOnBoardingHotSalesItems)
             }
         }
     }
@@ -90,13 +96,11 @@ class FragmentHomeStore : Fragment() {
             viewModel.navigateToMyCart()
         }
         binding.imageFilterHomeStore.setOnClickListener {
-            parentFragmentManager.beginTransaction()
-                .add(R.id.container_filter_home_store, FragmentFilterOptions())
-                .commit()
+            binding.containerFilterHomeStore.backgroundFilterOptions.isVisible =
+                !binding.containerFilterHomeStore.backgroundFilterOptions.isVisible
 
             binding.recyclerBestSellerHomeStore.isVisible =
                 !binding.recyclerBestSellerHomeStore.isVisible
-            binding.cardViewHomeStore.isVisible = !binding.cardViewHomeStore.isVisible
         }
     }
 
@@ -111,8 +115,9 @@ class FragmentHomeStore : Fragment() {
         }
     }
 
-    private fun setOnBoardingHotSalesItems() {
+    private fun setOnBoardingHotSalesItems(hotSalesData: List<HotSalesData>) {
         val hotSalesOnBoardingAdapter = HotSalesOnBoardingAdapter(this)
+        hotSalesOnBoardingAdapter.setItems(hotSalesData.map { it.id })
         binding.viewPagerHotSalesHomeStore.adapter = hotSalesOnBoardingAdapter
     }
 

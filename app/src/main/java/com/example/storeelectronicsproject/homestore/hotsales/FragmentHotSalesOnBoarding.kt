@@ -38,8 +38,8 @@ class FragmentHotSalesOnBoarding : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         launchWhenViewCreated {
-            viewModel.hotSales.observe {
-                it.map {
+            viewModel.hotSale.observe {
+
                     binding.textNamePhoneItem.text = it.title
                     binding.textDescriptionPhoneItem.text = it.subtitle
 
@@ -48,10 +48,10 @@ class FragmentHotSalesOnBoarding : Fragment() {
                         .load(it.picture)
                         .into(binding.imageView)
 
-                }
+
             }
         }
-        viewModel.loadHotSales(hotSalesId)
+        viewModel.loadHotSale(hotSalesId)
     }
     companion object {
         fun create(id: Int): FragmentHotSalesOnBoarding {

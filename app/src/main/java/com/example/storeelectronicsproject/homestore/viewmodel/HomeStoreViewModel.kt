@@ -15,7 +15,9 @@ import kotlinx.coroutines.flow.*
 class HomeStoreViewModel(
     private val getBestSeller: BestSellerUseCase,
     private val getCategory: CategoryUseCase,
+    private val getCategorySelect: CategorySelectUseCase,
     private val getHotSales: HotSalesUseCase,
+    private val getHotSale: HotSaleUseCase,
     private val navigatorDescription: HomeStoreProductDescriptionNavigatorUseCase,
     private val navigatorMyCart: HomeStoreMyCartNavigatorUseCase
 ) : ViewModel() {
@@ -28,6 +30,10 @@ class HomeStoreViewModel(
 
     private var _hotSales: MutableStateFlow<List<HotSalesData>> = MutableStateFlow(emptyList())
     val hotSales: StateFlow<List<HotSalesData>> get() = _hotSales.asStateFlow()
+
+    private var _hotSale: MutableStateFlow<HotSalesData> =
+        MutableStateFlow(HotSalesData(0, false, true, "", "", ""))
+    val hotSale: StateFlow<HotSalesData> get() = _hotSale.asStateFlow()
 
     private val _navCommand: MutableSharedFlow<NavCommand> = createSharedFlow()
     val navCommand: SharedFlow<NavCommand> get() = _navCommand.asSharedFlow()
@@ -52,13 +58,27 @@ class HomeStoreViewModel(
         _categoryData.tryEmit(getCategory())
     }
 
-    fun loadHotSales(id: Int) {
+    fun loadCategorySelect(index: Int) {
+        _categoryData.tryEmit(getCategorySelect(index))
+    }
+
+    fun loadHotSales() {
         compositeDisposable += getHotSales()
             .subscribe({
                 _hotSales.tryEmit(it)
             }, {
                 _screenState.postValue(it.toString())
             })
+    }
+
+    fun loadHotSale(id: Int) {
+        compositeDisposable += getHotSale(id)
+            .subscribe({
+                _hotSale.tryEmit(it)
+            }, {
+                _screenState.postValue(it.toString())
+            })
+
     }
 
     fun navigateToProductDescription(id: Int) {

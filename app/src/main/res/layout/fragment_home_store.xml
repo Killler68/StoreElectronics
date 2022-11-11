@@ -225,14 +225,17 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/view_pager_hot_sales_home_store" />
 
-        <FrameLayout
+        <include
             android:id="@+id/container_filter_home_store"
             android:layout_width="0dp"
             android:layout_height="300dp"
+            layout="@layout/fragment_filter_options"
             android:layout_marginTop="10dp"
             app:layout_constraintTop_toBottomOf="@+id/view_pager_hot_sales_home_store"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/card_view_home_store"
+            tools:ignore="FragmentTagUsage" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler_best_seller_home_store"
@@ -247,19 +250,20 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/text_best_seller"
+            app:layout_constraintBottom_toTopOf="@+id/card_view_home_store"
             tools:listitem="@layout/recycler_best_seller_item_home_store" />
 
         <androidx.cardview.widget.CardView
             android:id="@+id/card_view_home_store"
             android:layout_width="0dp"
             android:layout_height="72dp"
-            android:layout_marginTop="22dp"
+            android:layout_marginTop="94dp"
             android:backgroundTint="#010035"
             app:cardCornerRadius="30dp"
             app:cardElevation="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/recycler_best_seller_home_store">
+            app:layout_constraintStart_toStartOf="parent">
 
 
             <LinearLayout

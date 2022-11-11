@@ -27,7 +27,7 @@
     <TextView
         android:id="@+id/text_name_my_cart"
         android:layout_width="0dp"
-        android:layout_height="50dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="17dp"
         android:text="Galaxy Note 20 Ultra"
         android:textColor="#FFFFFF"
@@ -38,7 +38,7 @@
     <TextView
         android:id="@+id/text_price_my_cart"
         android:layout_width="0dp"
-        android:layout_height="25dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="17dp"
         android:text="$3000.00"
         android:textColor="#FF6E4E"

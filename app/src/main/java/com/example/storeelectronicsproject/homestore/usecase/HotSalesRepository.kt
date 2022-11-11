@@ -6,5 +6,6 @@ import io.reactivex.Single
 interface HotSalesRepository {
 
     fun getHotSales(): Single<List<HotSalesData>>
+    fun getHotSaleById(id: Int): Single<HotSalesData>
 
 }

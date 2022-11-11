@@ -7,12 +7,17 @@ import com.example.storeelectronicsproject.homestore.hotsales.FragmentHotSalesOn
 class HotSalesOnBoardingAdapter(fragment: Fragment) :
     FragmentStateAdapter(fragment) {
 
+    private val items = mutableListOf<Int>()
 
     override fun getItemCount(): Int {
-        return 3
+        return items.count()
     }
 
     override fun createFragment(position: Int): Fragment {
-        return FragmentHotSalesOnBoarding.create(position)
+        return FragmentHotSalesOnBoarding.create(items[position])
+    }
+
+    fun setItems(item: List<Int>) {
+        items.addAll(item)
     }
 }
