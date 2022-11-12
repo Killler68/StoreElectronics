@@ -8,12 +8,14 @@ import com.example.storeelectronicsproject.common.flow.createSharedFlow
 import com.example.storeelectronicsproject.common.navigation.NavCommand
 import com.example.storeelectronicsproject.mycart.model.BasketData
 import com.example.storeelectronicsproject.mycart.model.MyCartData
+import com.example.storeelectronicsproject.mycart.usecase.BasketDeleteRepository
 import io.reactivex.disposables.CompositeDisposable
 import kotlinx.coroutines.flow.*
 
 class MyCartViewModel(
     private val getBasket: BasketUseCase,
     private val getMyCart: MyCartUseCase,
+    private val deleteBasket: BasketDeleteRepository,
     private val navigatorHomeStore: MyCartHomeStoreNavigatorUseCase
 ) : ViewModel() {
 
@@ -44,6 +46,16 @@ class MyCartViewModel(
         compositeDisposable += getMyCart()
             .subscribe({
                 _myCart.tryEmit(it)
+            }, {
+                _screenState.postValue(it.toString())
+            })
+    }
+
+    fun deleteBasket(basketData: BasketData) {
+        deleteBasket.deleteBasket(basketData)
+        compositeDisposable += getBasket()
+            .subscribe({
+                _basket.tryEmit(it)
             }, {
                 _screenState.postValue(it.toString())
             })

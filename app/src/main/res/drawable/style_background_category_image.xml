@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <style
+        android:name="a">
+        <item
+            android:name="cornerSize"
+            tools:ignore="ExtraText">50%
+        </item>
+    </style>
+
+    <style
+        android:name="ShapeAppearanceOverlay.App.CornerSize360dp">
+        <item android:name="cornerSize">180dp</item>
+    </style>
+    <solid android:color="@color/orange"/>
+</shape>

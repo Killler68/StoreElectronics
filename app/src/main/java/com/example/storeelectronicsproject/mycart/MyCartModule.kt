@@ -24,6 +24,10 @@ class MyCartModule {
     fun provideMyCartRepository(storeApi: StoreApi): MyCartRepository = MyCartRepositoryImpl(storeApi)
 
     @Provides
+    fun provideBasketDeleteRepository(storeApi: StoreApi): BasketDeleteRepository =
+        MyCartRepositoryImpl(storeApi)
+
+    @Provides
     fun provideBasketUseCase(repository: BasketRepository): BasketUseCase =
         BasketUseCaseImpl(repository)
 
@@ -44,8 +48,9 @@ class MyCartModule {
     fun provideMyCartViewModel(
         basketUseCase: BasketUseCase,
         myCartUseCase: MyCartUseCase,
+        deleteBasketUseCase: BasketDeleteRepository,
         navigatorHomeStoreUseCase: MyCartHomeStoreNavigatorUseCase
     ): ViewModel {
-        return MyCartViewModel(basketUseCase, myCartUseCase, navigatorHomeStoreUseCase)
+        return MyCartViewModel(basketUseCase, myCartUseCase, deleteBasketUseCase, navigatorHomeStoreUseCase)
     }
 }

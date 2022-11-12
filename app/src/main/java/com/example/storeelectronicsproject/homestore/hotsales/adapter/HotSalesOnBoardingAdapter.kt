@@ -14,7 +14,7 @@ class HotSalesOnBoardingAdapter(fragment: Fragment) :
     }
 
     override fun createFragment(position: Int): Fragment {
-        return FragmentHotSalesOnBoarding.create(items[position])
+        return FragmentHotSalesOnBoarding.create(items[position], position != 1)
     }
 
     fun setItems(item: List<Int>) {

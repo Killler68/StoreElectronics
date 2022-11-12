@@ -91,6 +91,6 @@ private val testCategory = listOf(
     CategoryData(R.drawable.image_category_computer, "computer"),
     CategoryData(R.drawable.image_category_health, "health"),
     CategoryData(R.drawable.image_category_books, "books"),
-    CategoryData(R.drawable.vector, "phone")
+    CategoryData(R.drawable.image_category_computer, "phone")
 
 )

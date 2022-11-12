@@ -9,7 +9,8 @@ import com.example.storeelectronicsproject.mycart.model.BasketData
 import com.mikepenz.fastadapter.binding.AbstractBindingItem
 
 class BasketItem(
-    private val basketData: BasketData
+    private val basketData: BasketData,
+    private val onClickDelete: (BasketData) -> Unit,
 ) : AbstractBindingItem<RecyclerItemMyCartBinding>() {
 
     override fun bindView(binding: RecyclerItemMyCartBinding, payloads: List<Any>) {
@@ -18,6 +19,9 @@ class BasketItem(
         binding.textNameMyCart.text = basketData.title
         binding.textPriceMyCart.text = basketData.price.toString()
 
+        binding.imageDeleteMyCart.setOnClickListener {
+            onClickDelete(basketData)
+        }
         Glide
             .with(binding.root)
             .load(basketData.images)

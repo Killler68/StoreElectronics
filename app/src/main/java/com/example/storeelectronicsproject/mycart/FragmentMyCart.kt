@@ -61,7 +61,12 @@ class FragmentMyCart : Fragment() {
     }
 
     private fun onDataLoadedBasket(basketData: List<BasketData>) {
-        FastAdapterDiffUtil[basketItemAdapter] = basketData.map { BasketItem(it) }
+        FastAdapterDiffUtil[basketItemAdapter] = basketData.map {
+            BasketItem(
+                it,
+                viewModel::deleteBasket
+            )
+        }
     }
 
     private fun onDataLoadedMyCart(myCartData: MyCartData) {

@@ -6,7 +6,7 @@
     android:layout_height="wrap_content">
 
 
-    <ImageView
+    <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/image_category_background_item"
         android:layout_width="0dp"
         android:layout_height="71dp"
