@@ -50,13 +50,13 @@ class FragmentHotSalesOnBoarding : Fragment() {
 
                 binding.textNamePhoneItem.text = it.title
                 binding.textDescriptionPhoneItem.text = it.subtitle
-
+                if (!it.is_new) {
+                    binding.imageNewPhoneItem.isVisible = false
+                }
                 Glide
                     .with(requireView())
                     .load(it.picture)
-                    .into(binding.imageView)
-
-
+                    .into(binding.imagePhoneItem)
             }
         }
         viewModel.loadHotSale(hotSalesId)

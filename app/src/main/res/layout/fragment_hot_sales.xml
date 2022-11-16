@@ -13,7 +13,7 @@
         android:layout_height="match_parent">
 
         <ImageView
-            android:id="@+id/imageView"
+            android:id="@+id/image_phone_item"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:scaleType="centerCrop"
@@ -24,7 +24,7 @@
             app:srcCompat="@drawable/image_background_hot_sales_phone" />
 
         <ImageView
-            android:id="@+id/imageView3"
+            android:id="@+id/image_new_phone_item"
             android:layout_width="wrap_content"
             android:layout_height="27dp"
             android:layout_marginStart="25dp"
@@ -35,15 +35,17 @@
             app:srcCompat="@drawable/image_background_hot_sales_new" />
 
         <TextView
+            android:id="@+id/text_new_phone_item"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="29dp"
-            android:layout_marginTop="21dp"
+            android:gravity="center"
             android:text="New"
             android:textColor="#FFFFFF"
             android:textSize="10sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintBottom_toBottomOf="@+id/image_new_phone_item"
+            app:layout_constraintEnd_toEndOf="@+id/image_new_phone_item"
+            app:layout_constraintStart_toStartOf="@+id/image_new_phone_item"
+            app:layout_constraintTop_toTopOf="@+id/image_new_phone_item" />
 
         <TextView
             android:id="@+id/text_name_phone_item"
@@ -55,7 +57,7 @@
             android:textColor="#FFFFFF"
             android:textSize="25sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+            app:layout_constraintTop_toBottomOf="@+id/image_new_phone_item" />
 
         <TextView
             android:id="@+id/text_description_phone_item"
@@ -63,10 +65,10 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="25dp"
             android:layout_marginTop="5dp"
+            android:layout_marginBottom="20dp"
             android:text="Super. Mega. Rapido."
             android:textColor="#FFFFFF"
             android:textSize="11sp"
-            android:layout_marginBottom="20dp"
             app:layout_constraintBottom_toTopOf="@+id/button"
             app:layout_constraintStart_toStartOf="parent" />
 
