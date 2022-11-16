@@ -4,12 +4,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.storeelectronicsproject.common.flow.launchWhenViewCreated
 import com.example.storeelectronicsproject.common.fragment.getViewModelFactory
 import com.example.storeelectronicsproject.common.navigation.NavCommand
+import com.example.storeelectronicsproject.common.state.State
 import com.example.storeelectronicsproject.databinding.FragmentMyCartBinding
 import com.example.storeelectronicsproject.mycart.model.BasketData
 import com.example.storeelectronicsproject.mycart.model.MyCartData
@@ -56,6 +58,7 @@ class FragmentMyCart : Fragment() {
                 basket.observe(::onDataLoadedBasket)
                 myCart.observe(::onDataLoadedMyCart)
                 navCommand.observe(::onDataLoadedNavigation)
+                screenState.observe(viewLifecycleOwner, ::stateScreen)
             }
         }
     }
@@ -84,4 +87,31 @@ class FragmentMyCart : Fragment() {
             viewModel.navigationToHomeStore()
         }
     }
+
+    private fun stateScreen(state: State) {
+        when (state) {
+            State.Loading -> onScreenLoading()
+            State.Loaded -> onScreenLoaded()
+            State.Error -> onScreenError()
+        }
+    }
+
+    private fun onScreenLoading() {
+        binding.layoutMyCart.isVisible = false
+        binding.includedStatusLayoutDetails.groupError.isVisible = false
+        binding.includedStatusLayoutDetails.progressBarState.isVisible = true
+    }
+
+    private fun onScreenLoaded() {
+        binding.layoutMyCart.isVisible = true
+        binding.includedStatusLayoutDetails.groupError.isVisible = false
+        binding.includedStatusLayoutDetails.progressBarState.isVisible = false
+    }
+
+    private fun onScreenError() {
+        binding.layoutMyCart.isVisible = false
+        binding.includedStatusLayoutDetails.groupError.isVisible = true
+        binding.includedStatusLayoutDetails.progressBarState.isVisible = false
+    }
+
 }

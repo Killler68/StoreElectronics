@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModel
 import com.example.coinproject.common.rx.plusAssign
 import com.example.storeelectronicsproject.common.flow.createSharedFlow
 import com.example.storeelectronicsproject.common.navigation.NavCommand
+import com.example.storeelectronicsproject.common.state.State
 import com.example.storeelectronicsproject.mycart.model.BasketData
 import com.example.storeelectronicsproject.mycart.model.MyCartData
 import com.example.storeelectronicsproject.mycart.usecase.BasketDeleteRepository
@@ -28,26 +29,30 @@ class MyCartViewModel(
     private val _navCommand: MutableSharedFlow<NavCommand> = createSharedFlow()
     val navCommand: SharedFlow<NavCommand> get() = _navCommand.asSharedFlow()
 
-    private var _screenState: MutableLiveData<String> = MutableLiveData()
-    val screenState: LiveData<String> get() = _screenState
+    private var _screenState: MutableLiveData<State> = MutableLiveData()
+    val screenState: LiveData<State> get() = _screenState
 
     private var compositeDisposable = CompositeDisposable()
 
     fun loadBasket() {
+        _screenState.postValue(State.Loading)
         compositeDisposable += getBasket()
             .subscribe({
                 _basket.tryEmit(it)
+                _screenState.postValue(State.Loaded)
             }, {
-                _screenState.postValue(it.toString())
+                _screenState.postValue(State.Error)
             })
     }
 
     fun loadMyCart() {
+        _screenState.postValue(State.Loading)
         compositeDisposable += getMyCart()
             .subscribe({
                 _myCart.tryEmit(it)
+                _screenState.postValue(State.Loaded)
             }, {
-                _screenState.postValue(it.toString())
+                _screenState.postValue(State.Error)
             })
     }
 
@@ -57,7 +62,7 @@ class MyCartViewModel(
             .subscribe({
                 _basket.tryEmit(it)
             }, {
-                _screenState.postValue(it.toString())
+                _screenState.postValue(State.Error)
             })
     }
 
