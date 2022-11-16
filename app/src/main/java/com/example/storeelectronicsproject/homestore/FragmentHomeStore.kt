@@ -11,6 +11,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.storeelectronicsproject.common.flow.launchWhenViewCreated
 import com.example.storeelectronicsproject.common.fragment.getViewModelFactory
 import com.example.storeelectronicsproject.common.navigation.NavCommand
+import com.example.storeelectronicsproject.common.state.State
 import com.example.storeelectronicsproject.databinding.FragmentHomeStoreBinding
 import com.example.storeelectronicsproject.homestore.hotsales.adapter.HotSalesOnBoardingAdapter
 import com.example.storeelectronicsproject.homestore.model.BestSellerData
@@ -70,6 +71,7 @@ class FragmentHomeStore : Fragment() {
                 categoryData.observe(::onDataLoadedCategory)
                 navCommand.observe(::onDataLoadedNavigation)
                 hotSales.observe(::setOnBoardingHotSalesItems)
+                screenState.observe(viewLifecycleOwner, ::stateScreen)
             }
         }
     }
@@ -119,6 +121,35 @@ class FragmentHomeStore : Fragment() {
         val hotSalesOnBoardingAdapter = HotSalesOnBoardingAdapter(this)
         hotSalesOnBoardingAdapter.setItems(hotSalesData.map { it.id })
         binding.viewPagerHotSalesHomeStore.adapter = hotSalesOnBoardingAdapter
+    }
+
+    private fun stateScreen(state: State) {
+        when (state) {
+            State.Loading -> onScreenLoading()
+            State.Loaded -> onScreenLoaded()
+            State.Error -> onScreenError()
+        }
+    }
+
+    private fun onScreenLoading() {
+        binding.viewPagerHotSalesHomeStore.isVisible = false
+        binding.recyclerBestSellerHomeStore.isVisible = false
+        binding.includedStatusLayout.groupError.isVisible = false
+        binding.includedStatusLayout.progressBarState.isVisible = true
+    }
+
+    private fun onScreenLoaded() {
+        binding.viewPagerHotSalesHomeStore.isVisible = true
+        binding.recyclerBestSellerHomeStore.isVisible = true
+        binding.includedStatusLayout.groupError.isVisible = false
+        binding.includedStatusLayout.progressBarState.isVisible = false
+    }
+
+    private fun onScreenError() {
+        binding.viewPagerHotSalesHomeStore.isVisible = false
+        binding.recyclerBestSellerHomeStore.isVisible = false
+        binding.includedStatusLayout.progressBarState.isVisible = false
+        binding.includedStatusLayout.groupError.isVisible = true
     }
 
     override fun onDestroyView() {

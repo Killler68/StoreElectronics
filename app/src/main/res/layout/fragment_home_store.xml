@@ -258,11 +258,11 @@
             android:layout_height="72dp"
             android:layout_marginTop="8dp"
             android:backgroundTint="#010035"
-            app:layout_constraintTop_toBottomOf="@+id/container_filter_home_store"
             app:cardCornerRadius="30dp"
             app:cardElevation="0dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent">
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/container_filter_home_store">
 
 
             <LinearLayout
@@ -311,11 +311,21 @@
                     android:layout_width="18dp"
                     android:layout_height="18dp"
                     android:layout_marginTop="27dp"
+                    android:layout_marginEnd="30dp"
                     android:layout_weight="1"
-                    android:src="@drawable/image_accounts"
-                    android:layout_marginEnd="30dp"/>
+                    android:src="@drawable/image_accounts" />
             </LinearLayout>
         </androidx.cardview.widget.CardView>
+
+        <include
+            android:id="@+id/included_status_layout"
+            layout="@layout/status_layout"
+            android:layout_width="match_parent"
+            android:layout_height="190dp"
+            android:layout_marginTop="150dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_sales_home_store" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
