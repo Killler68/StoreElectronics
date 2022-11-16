@@ -86,6 +86,12 @@ class FragmentMyCart : Fragment() {
         binding.imageBackMyCart.setOnClickListener {
             viewModel.navigationToHomeStore()
         }
+        binding.includedStatusLayoutMyCart.btnErrorState.setOnClickListener {
+            with(viewModel) {
+                loadBasket()
+                loadMyCart()
+            }
+        }
     }
 
     private fun stateScreen(state: State) {
@@ -98,20 +104,23 @@ class FragmentMyCart : Fragment() {
 
     private fun onScreenLoading() {
         binding.layoutMyCart.isVisible = false
-        binding.includedStatusLayoutDetails.groupError.isVisible = false
-        binding.includedStatusLayoutDetails.progressBarState.isVisible = true
+        binding.includedStatusLayoutMyCart.backgroundState.isVisible = true
+        binding.includedStatusLayoutMyCart.groupError.isVisible = false
+        binding.includedStatusLayoutMyCart.progressBarState.isVisible = true
     }
 
     private fun onScreenLoaded() {
         binding.layoutMyCart.isVisible = true
-        binding.includedStatusLayoutDetails.groupError.isVisible = false
-        binding.includedStatusLayoutDetails.progressBarState.isVisible = false
+        binding.includedStatusLayoutMyCart.backgroundState.isVisible = false
+        binding.includedStatusLayoutMyCart.groupError.isVisible = false
+        binding.includedStatusLayoutMyCart.progressBarState.isVisible = false
     }
 
     private fun onScreenError() {
         binding.layoutMyCart.isVisible = false
-        binding.includedStatusLayoutDetails.groupError.isVisible = true
-        binding.includedStatusLayoutDetails.progressBarState.isVisible = false
+        binding.includedStatusLayoutMyCart.backgroundState.isVisible = true
+        binding.includedStatusLayoutMyCart.groupError.isVisible = true
+        binding.includedStatusLayoutMyCart.progressBarState.isVisible = false
     }
 
 }

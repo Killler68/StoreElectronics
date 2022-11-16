@@ -96,8 +96,17 @@ class FragmentProductDetails : Fragment() {
     }
 
     private fun setupListeners() {
+        val arguments = requireArguments().getInt(KEY)
+
         binding.imageBackDetails.setOnClickListener {
             viewModel.navigateToHomeStore()
+        }
+        binding.includedStatusLayoutDetails.btnErrorState.setOnClickListener {
+            with(viewModel) {
+                loadDetails(arguments)
+                loadDetailsShop()
+                loadDetailsImages()
+            }
         }
     }
 
@@ -112,6 +121,7 @@ class FragmentProductDetails : Fragment() {
     private fun onScreenLoading() {
         binding.recyclerDetails.isVisible = false
         binding.cardViewDetails.isVisible = false
+        binding.includedStatusLayoutDetails.backgroundState.isVisible = true
         binding.includedStatusLayoutDetails.groupError.isVisible = false
         binding.includedStatusLayoutDetails.progressBarState.isVisible = true
     }
@@ -119,6 +129,7 @@ class FragmentProductDetails : Fragment() {
     private fun onScreenLoaded() {
         binding.recyclerDetails.isVisible = true
         binding.cardViewDetails.isVisible = true
+        binding.includedStatusLayoutDetails.backgroundState.isVisible = false
         binding.includedStatusLayoutDetails.groupError.isVisible = false
         binding.includedStatusLayoutDetails.progressBarState.isVisible = false
     }
@@ -126,6 +137,7 @@ class FragmentProductDetails : Fragment() {
     private fun onScreenError() {
         binding.recyclerDetails.isVisible = false
         binding.cardViewDetails.isVisible = false
+        binding.includedStatusLayoutDetails.backgroundState.isVisible = true
         binding.includedStatusLayoutDetails.groupError.isVisible = true
         binding.includedStatusLayoutDetails.progressBarState.isVisible = false
     }

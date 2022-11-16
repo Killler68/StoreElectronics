@@ -104,6 +104,12 @@ class FragmentHomeStore : Fragment() {
             binding.recyclerBestSellerHomeStore.isVisible =
                 !binding.recyclerBestSellerHomeStore.isVisible
         }
+        binding.includedStatusLayout.btnErrorState.setOnClickListener {
+            with(viewModel) {
+                loadBestSeller()
+                loadHotSales()
+            }
+        }
     }
 
     private fun createFastAdapter() {
@@ -134,6 +140,7 @@ class FragmentHomeStore : Fragment() {
     private fun onScreenLoading() {
         binding.viewPagerHotSalesHomeStore.isVisible = false
         binding.recyclerBestSellerHomeStore.isVisible = false
+        binding.includedStatusLayout.backgroundState.isVisible = true
         binding.includedStatusLayout.groupError.isVisible = false
         binding.includedStatusLayout.progressBarState.isVisible = true
     }
@@ -141,6 +148,7 @@ class FragmentHomeStore : Fragment() {
     private fun onScreenLoaded() {
         binding.viewPagerHotSalesHomeStore.isVisible = true
         binding.recyclerBestSellerHomeStore.isVisible = true
+        binding.includedStatusLayout.backgroundState.isVisible = false
         binding.includedStatusLayout.groupError.isVisible = false
         binding.includedStatusLayout.progressBarState.isVisible = false
     }
@@ -148,6 +156,7 @@ class FragmentHomeStore : Fragment() {
     private fun onScreenError() {
         binding.viewPagerHotSalesHomeStore.isVisible = false
         binding.recyclerBestSellerHomeStore.isVisible = false
+        binding.includedStatusLayout.backgroundState.isVisible = true
         binding.includedStatusLayout.progressBarState.isVisible = false
         binding.includedStatusLayout.groupError.isVisible = true
     }

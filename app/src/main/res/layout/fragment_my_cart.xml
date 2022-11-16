@@ -192,7 +192,7 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <include
-        android:id="@+id/included_status_layout_details"
+        android:id="@+id/included_status_layout_my_cart"
         layout="@layout/status_layout"
         android:layout_width="match_parent"
         android:layout_height="190dp"
