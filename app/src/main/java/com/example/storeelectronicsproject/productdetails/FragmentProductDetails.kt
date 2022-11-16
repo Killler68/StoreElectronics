@@ -4,13 +4,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.storeelectronicsproject.common.flow.launchWhenViewCreated
 import com.example.storeelectronicsproject.common.fragment.getViewModelFactory
 import com.example.storeelectronicsproject.common.navigation.NavCommand
+import com.example.storeelectronicsproject.common.state.State
 import com.example.storeelectronicsproject.databinding.FragmentProductDetailsBinding
 import com.example.storeelectronicsproject.productdetails.model.DetailsData
 import com.example.storeelectronicsproject.productdetails.model.DetailsImagesData
@@ -68,9 +69,7 @@ class FragmentProductDetails : Fragment() {
                 detailsShop.observe(::onDataLoadedShopDetails)
                 detailsImages.observe(::onDataLoadedImages)
                 navCommand.observe(::onDataLoadedNavigation)
-                screenState.observe(viewLifecycleOwner) {
-                    Toast.makeText(context, it, Toast.LENGTH_LONG).show()
-                }
+                screenState.observe(viewLifecycleOwner, ::stateScreen)
             }
         }
     }
@@ -100,6 +99,35 @@ class FragmentProductDetails : Fragment() {
         binding.imageBackDetails.setOnClickListener {
             viewModel.navigateToHomeStore()
         }
+    }
+
+    private fun stateScreen(state: State) {
+        when (state) {
+            State.Loading -> onScreenLoading()
+            State.Loaded -> onScreenLoaded()
+            State.Error -> onScreenError()
+        }
+    }
+
+    private fun onScreenLoading() {
+        binding.recyclerDetails.isVisible = false
+        binding.cardViewDetails.isVisible = false
+        binding.includedStatusLayoutDetails.groupError.isVisible = false
+        binding.includedStatusLayoutDetails.progressBarState.isVisible = true
+    }
+
+    private fun onScreenLoaded() {
+        binding.recyclerDetails.isVisible = true
+        binding.cardViewDetails.isVisible = true
+        binding.includedStatusLayoutDetails.groupError.isVisible = false
+        binding.includedStatusLayoutDetails.progressBarState.isVisible = false
+    }
+
+    private fun onScreenError() {
+        binding.recyclerDetails.isVisible = false
+        binding.cardViewDetails.isVisible = false
+        binding.includedStatusLayoutDetails.groupError.isVisible = true
+        binding.includedStatusLayoutDetails.progressBarState.isVisible = false
     }
 
     override fun onDestroyView() {
