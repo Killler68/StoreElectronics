@@ -1,5 +1,64 @@
 <resources>
     <string name="app_name">StoreElectronicsProject</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="usd">$%s</string>
+    <string name="usd_my_cart">$%s us</string>
+    <string name="capacity">%s GB</string>
+
+    <string name="filter_options">Filter Options</string>
+    <string name="btn_done">Done</string>
+    <string name="brand">Brand</string>
+    <string name="name_phone_filter">Samsung</string>
+    <string name="price">Price</string>
+    <string name="cost_range">$300 - $500</string>
+    <string name="size">Size</string>
+    <string name="edit_size">4.5 to 5.5 inches</string>
+
+    <string name="name_city">Zihuatanejo, Gro</string>
+    <string name="select_category">Select Category</string>
+    <string name="view_all">view all</string>
+    <string name="search">Search</string>
+    <string name="hot_sales">Hot Sales</string>
+    <string name="see_more">see more</string>
+    <string name="best_seller">Best Seller</string>
+    <string name="explorer">Explorer</string>
+
+    <string name="news">new</string>
+    <string name="name_phone_hot_sales">Iphone 12</string>
+    <string name="title_phone_hot_sales">Super. Mega. Rapido.</string>
+    <string name="btn_buy">But now!</string>
+
+    <string name="my_cart">My Cart</string>
+    <string name="add_address">Add address </string>
+    <string name="total_price">Total</string>
+    <string name="total_price_usd">$6,000 us</string>
+    <string name="delivery">Delivery</string>
+    <string name="delivery_free">Free</string>
+    <string name="btn_checkout">Checkout</string>
+
+    <string name="product_details">Product Details</string>
+    <string name="name_phone">Galaxy Note 20 Ultra</string>
+    <string name="shop_details">Shop</string>
+    <string name="details">Details</string>
+    <string name="features">Features</string>
+    <string name="processor">Exynos 990</string>
+    <string name="camera">108 + 12 mp</string>
+    <string name="ram">8 GB</string>
+    <string name="hdd">256 GB</string>
+    <string name="select_color_and_capacity">Select color  and capacity</string>
+    <string name="capacity_one_details">128 GB</string>
+    <string name="capacity_two_details">256 gb</string>
+    <string name="add_card">Add to Card</string>
+    <string name="total_price_details">$ 1,500.00</string>
+
+    <string name="current_price_best_seller">$1,047</string>
+    <string name="price_best_seller">$1500</string>
+    <string name="name_phone_best_seller">Samsung Galaxy s20 Ultra</string>
+
+    <string name="error">Ой, ошибка. Попробуем снова?</string>
+    <string name="btn_error_continue">Попробовать</string>
+
+    <string name="phones">Phones</string>
+
+
 </resources>

@@ -21,8 +21,15 @@ class BestSellerItem(
         }
         binding.textNamePhoneItemBestSeller.text = bestSellerData.title
         binding.textCurrentPriceItemBestSeller.text =
-            bestSellerData.price_without_discount.toString()
-        binding.textPriceItemBestSeller.text = bestSellerData.discount_price.toString()
+            binding.root.resources.getString(
+                R.string.usd,
+                bestSellerData.price_without_discount.toString()
+            )
+
+        binding.textPriceItemBestSeller.text = binding.root.resources.getString(
+            R.string.usd,
+            bestSellerData.discount_price.toString()
+        )
 
         Glide
             .with(binding.root)

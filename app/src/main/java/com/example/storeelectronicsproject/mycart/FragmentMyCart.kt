@@ -8,6 +8,7 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import com.example.storeelectronicsproject.R
 import com.example.storeelectronicsproject.common.flow.launchWhenViewCreated
 import com.example.storeelectronicsproject.common.fragment.getViewModelFactory
 import com.example.storeelectronicsproject.common.navigation.NavCommand
@@ -73,7 +74,11 @@ class FragmentMyCart : Fragment() {
     }
 
     private fun onDataLoadedMyCart(myCartData: MyCartData) {
-        binding.textTotalMyCart.text = myCartData.total.toString()
+        binding.textTotalMyCart.text =
+            requireContext().resources.getString(
+                R.string.usd_my_cart,
+                myCartData.total.toString()
+            )
         binding.textDeliveryMyCart.text = myCartData.delivery
     }
 

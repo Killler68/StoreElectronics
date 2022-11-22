@@ -53,17 +53,15 @@ class DetailsRepositoryImpl(private val storeApi: StoreApi) :
         }
     }
 
-    override fun getDetailsImages(): Single<List<DetailsImagesData>> {
+    override fun getDetailsImages(): Single<DetailsImagesData> {
         try {
             val response = storeApi.getProductDetails()
             return response.map {
-                it.images.map {
-                    DetailsImagesData(
-                        listOf(it)
-                    )
-                }
+                DetailsImagesData(
+                    it.id,
+                    it.images
+                )
             }
-
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
         } catch (e: Exception) {

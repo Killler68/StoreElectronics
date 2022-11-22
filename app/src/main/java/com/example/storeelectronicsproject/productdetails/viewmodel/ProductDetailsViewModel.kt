@@ -28,9 +28,9 @@ class ProductDetailsViewModel(
         MutableStateFlow(DetailsShopData("", "", "", ""))
     val detailsShop: StateFlow<DetailsShopData> get() = _detailsShop.asStateFlow()
 
-    private var _detailsImages: MutableStateFlow<List<DetailsImagesData>> =
-        MutableStateFlow(emptyList())
-    val detailsImages: StateFlow<List<DetailsImagesData>> get() = _detailsImages.asStateFlow()
+    private var _detailsImages: MutableStateFlow<DetailsImagesData> =
+        MutableStateFlow(DetailsImagesData("", emptyList()))
+    val detailsImages: StateFlow<DetailsImagesData> get() = _detailsImages.asStateFlow()
 
     private val _navCommand: MutableSharedFlow<NavCommand> = createSharedFlow()
     val navCommand: SharedFlow<NavCommand> get() = _navCommand.asSharedFlow()

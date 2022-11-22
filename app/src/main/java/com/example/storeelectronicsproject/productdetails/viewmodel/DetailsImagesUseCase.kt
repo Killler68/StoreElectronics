@@ -5,6 +5,6 @@ import io.reactivex.Single
 
 interface DetailsImagesUseCase {
 
-    operator fun invoke(): Single<List<DetailsImagesData>>
+    operator fun invoke(): Single<DetailsImagesData>
 
 }

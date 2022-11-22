@@ -7,6 +7,6 @@ import io.reactivex.Single
 class DetailsImagesUseCaseImpl(private val repository: DetailsImagesRepository) :
     DetailsImagesUseCase {
 
-    override fun invoke(): Single<List<DetailsImagesData>> = repository.getDetailsImages()
+    override fun invoke(): Single<DetailsImagesData> = repository.getDetailsImages()
 
 }

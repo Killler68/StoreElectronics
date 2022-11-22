@@ -5,5 +5,5 @@ import io.reactivex.Single
 
 interface DetailsImagesRepository {
 
-    fun getDetailsImages(): Single<List<DetailsImagesData>>
+    fun getDetailsImages(): Single<DetailsImagesData>
 }

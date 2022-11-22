@@ -4,10 +4,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import com.example.storeelectronicsproject.R
 import com.example.storeelectronicsproject.common.flow.launchWhenViewCreated
 import com.example.storeelectronicsproject.common.fragment.getViewModelFactory
 import com.example.storeelectronicsproject.common.navigation.NavCommand
@@ -16,11 +18,11 @@ import com.example.storeelectronicsproject.databinding.FragmentProductDetailsBin
 import com.example.storeelectronicsproject.productdetails.model.DetailsData
 import com.example.storeelectronicsproject.productdetails.model.DetailsImagesData
 import com.example.storeelectronicsproject.productdetails.model.DetailsShopData
+import com.example.storeelectronicsproject.productdetails.pager.adapter.ProductDetailsOnBoardingAdapter
 import com.example.storeelectronicsproject.productdetails.viewholder.DetailsImagesItem
 import com.example.storeelectronicsproject.productdetails.viewmodel.ProductDetailsViewModel
 import com.mikepenz.fastadapter.GenericFastAdapter
 import com.mikepenz.fastadapter.adapters.ItemAdapter
-import com.mikepenz.fastadapter.diff.FastAdapterDiffUtil
 
 
 const val KEY = "key"
@@ -47,12 +49,6 @@ class FragmentProductDetails : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val arguments = requireArguments().getInt(KEY)
 
-        with(binding.recyclerDetails) {
-            adapter = fastAdapter
-            itemAnimator = null
-        }
-
-
         setupObservables()
         setupListeners()
         with(viewModel) {
@@ -67,7 +63,7 @@ class FragmentProductDetails : Fragment() {
             viewModel.apply {
                 details.observe(::onDataLoadedDetails)
                 detailsShop.observe(::onDataLoadedShopDetails)
-                detailsImages.observe(::onDataLoadedImages)
+                detailsImages.observe(::setOnBoardingHotSalesItems)
                 navCommand.observe(::onDataLoadedNavigation)
                 screenState.observe(viewLifecycleOwner, ::stateScreen)
             }
@@ -76,8 +72,97 @@ class FragmentProductDetails : Fragment() {
 
     private fun onDataLoadedDetails(detailsData: DetailsData) {
         binding.textNamePhoneDetails.text = detailsData.title
-        binding.textCapacityDetails.text = detailsData.capacity.toString()
-        binding.textPriceDetails.text = detailsData.price.toString()
+        binding.ratingBarDetails.rating = detailsData.rating.toFloat()
+
+        binding.imageBackgroundCapacityDetailsTwo.setOnClickListener {
+            binding.imageBackgroundCapacityDetailsTwo.isEnabled = false
+            binding.imageBackgroundCapacityDetailsOne.isEnabled = true
+            binding.imageBackgroundCapacityDetailsTwo.setColorFilter(
+                ContextCompat.getColor(
+                    requireContext(),
+                    R.color.orange
+                )
+            )
+            binding.textCapacity2Details.setTextColor(
+                ContextCompat.getColor(
+                    requireContext(),
+                    R.color.white
+                )
+            )
+            binding.imageBackgroundCapacityDetailsOne.setColorFilter(
+                ContextCompat.getColor(
+                    requireContext(),
+                    R.color.background_gray
+                )
+            )
+            binding.textCapacity1Details.setTextColor(
+                ContextCompat.getColor(
+                    requireContext(),
+                    R.color.text_gray
+                )
+            )
+        }
+
+        binding.imageBackgroundCapacityDetailsOne.setOnClickListener {
+            binding.imageBackgroundCapacityDetailsTwo.isEnabled = true
+            binding.imageBackgroundCapacityDetailsOne.isEnabled = false
+            binding.imageBackgroundCapacityDetailsOne.setColorFilter(
+                ContextCompat.getColor(
+                    requireContext(),
+                    R.color.orange
+                )
+            )
+            binding.textCapacity1Details.setTextColor(
+                ContextCompat.getColor(
+                    requireContext(),
+                    R.color.white
+                )
+            )
+            binding.imageBackgroundCapacityDetailsTwo.setColorFilter(
+                ContextCompat.getColor(
+                    requireContext(),
+                    R.color.background_gray
+                )
+            )
+            binding.textCapacity2Details.setTextColor(
+                ContextCompat.getColor(
+                    requireContext(),
+                    R.color.text_gray
+                )
+            )
+        }
+
+        binding.textCapacity1Details.text =
+            requireContext().resources.getString(
+                R.string.capacity,
+                detailsData.capacity.map { it[0] }.toString()
+            )
+
+        binding.textCapacity2Details.text = requireContext().resources.getString(
+            R.string.capacity,
+            detailsData.capacity.map { it[1] }.toString()
+        )
+
+        binding.imageBackgroundColorOneDetails.setOnClickListener {
+            binding.imageColorOneDetails.isVisible = true
+            binding.imageColorTwoDetails.isVisible = false
+            binding.imageBackgroundColorOneDetails.isEnabled = false
+            binding.imageBackgroundColorTwoDetails.isEnabled = true
+        }
+        binding.imageBackgroundColorTwoDetails.setOnClickListener {
+            binding.imageColorOneDetails.isVisible = false
+            binding.imageColorTwoDetails.isVisible = true
+            binding.imageBackgroundColorOneDetails.isEnabled = true
+            binding.imageBackgroundColorTwoDetails.isEnabled = false
+        }
+
+        binding.textPriceDetails.text =
+            requireContext().resources.getString(
+                R.string.usd,
+                detailsData.price.toString()
+            )
+//        binding.imageBackgroundColorOneDetails.setColorFilter(ContextCompat.getColor(requireContext(), detailsData.color[0]))
+//        binding.textCapacity2Details.text = detailsData.capacity[1]
     }
 
     private fun onDataLoadedShopDetails(detailsShopData: DetailsShopData) {
@@ -85,10 +170,6 @@ class FragmentProductDetails : Fragment() {
         binding.textCameraDetails.text = detailsShopData.camera
         binding.textRamDetails.text = detailsShopData.ssd
         binding.textHddDetails.text = detailsShopData.sd
-    }
-
-    private fun onDataLoadedImages(detailsImagesData: List<DetailsImagesData>) {
-        FastAdapterDiffUtil[imagesItemAdapter] = detailsImagesData.map { DetailsImagesItem(it) }
     }
 
     private fun onDataLoadedNavigation(navCommand: NavCommand) {
@@ -109,6 +190,13 @@ class FragmentProductDetails : Fragment() {
             }
         }
     }
+
+    private fun setOnBoardingHotSalesItems(hotSalesData: DetailsImagesData) {
+        val hotSalesOnBoardingAdapter = ProductDetailsOnBoardingAdapter(this)
+        hotSalesOnBoardingAdapter.setItems(hotSalesData.id)
+        binding.recyclerDetails.adapter = hotSalesOnBoardingAdapter
+    }
+
 
     private fun stateScreen(state: State) {
         when (state) {
