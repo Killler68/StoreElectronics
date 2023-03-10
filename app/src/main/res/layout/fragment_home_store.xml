@@ -14,9 +14,9 @@
         <ImageView
             android:id="@+id/image_location_home_store"
             android:layout_width="0dp"
-            android:layout_height="19dp"
-            android:layout_marginTop="24dp"
-            android:layout_marginEnd="11dp"
+            android:layout_height="24dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
             android:src="@drawable/image_location"
             app:layout_constraintEnd_toStartOf="@+id/text_name_city_home_store"
             app:layout_constraintTop_toTopOf="parent" />
@@ -25,69 +25,58 @@
             android:id="@+id/text_name_city_home_store"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="100dp"
-            android:layout_marginTop="24dp"
-            android:layout_marginEnd="100dp"
+            android:layout_marginHorizontal="20dp"
             android:gravity="center"
             android:text="@string/name_city"
             android:textColor="#010035"
-            android:textSize="15sp"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="@+id/image_location_home_store"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <ImageView
-            android:id="@+id/image_group_home_store"
-            android:layout_width="0dp"
-            android:layout_height="5dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="33dp"
-            android:src="@drawable/image_group"
-            app:layout_constraintStart_toEndOf="@id/text_name_city_home_store"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="@+id/image_location_home_store" />
 
         <ImageView
             android:id="@+id/image_filter_home_store"
             android:layout_width="0dp"
-            android:layout_height="19dp"
-            android:layout_marginTop="24dp"
-            android:layout_marginEnd="50dp"
+            android:layout_height="24dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
             android:src="@drawable/image_filter"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/image_group_home_store"
+            app:layout_constraintStart_toEndOf="@+id/text_name_city_home_store"
             app:layout_constraintTop_toTopOf="parent" />
-
 
         <TextView
             android:id="@+id/text_name_category_home_store"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="17dp"
-            android:layout_marginTop="18dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
             android:gravity="center"
             android:text="@string/select_category"
             android:textColor="#010035"
-            android:textSize="25sp"
+            android:textSize="20sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/text_name_city_home_store" />
 
         <TextView
+            android:id="@+id/textView2"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="119dp"
-            android:layout_marginTop="28dp"
+            android:layout_marginEnd="40dp"
             android:gravity="center"
             android:text="@string/view_all"
             android:textColor="#FF6E4E"
-            android:textSize="15sp"
-            app:layout_constraintStart_toEndOf="@+id/text_name_category_home_store"
-            app:layout_constraintTop_toBottomOf="@+id/text_name_city_home_store" />
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="@+id/text_name_category_home_store"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/text_name_category_home_store" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler_category_home_store"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginTop="20dp"
             android:orientation="horizontal"
             android:overScrollMode="never"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
@@ -100,104 +89,102 @@
             android:id="@+id/card_view_search_home_store"
             android:layout_width="0dp"
             android:layout_height="34dp"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="35dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="30dp"
             android:layout_marginEnd="82dp"
             android:backgroundTint="@color/white"
             app:cardCornerRadius="50dp"
             app:cardElevation="1dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/recycler_category_home_store">
+            app:layout_constraintTop_toBottomOf="@+id/recycler_category_home_store" />
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <ImageView
-                    android:id="@+id/image_search_home_store"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginBottom="8dp"
-                    android:src="@drawable/image_search"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <EditText
-                    android:id="@+id/edit_text_home_store"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="11dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginBottom="8dp"
-                    android:background="@null"
-                    android:hint="@string/search"
-                    android:textColor="#2A2D33"
-                    android:textSize="14sp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/image_search_home_store"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-        </androidx.cardview.widget.CardView>
 
         <ImageView
-            android:id="@+id/imageView7"
+            android:id="@+id/image_search_home_store"
             android:layout_width="0dp"
-            android:layout_height="34dp"
-            android:layout_marginStart="11dp"
-            android:layout_marginTop="35dp"
-            android:layout_marginEnd="37dp"
-            android:scaleType="center"
-            android:src="@drawable/image_background_qrcode"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:elevation="1dp"
+            android:src="@drawable/image_search"
+            app:layout_constraintBottom_toBottomOf="@+id/card_view_search_home_store"
+            app:layout_constraintStart_toStartOf="@+id/card_view_search_home_store"
+            app:layout_constraintTop_toTopOf="@+id/card_view_search_home_store" />
+
+        <EditText
+            android:id="@+id/edit_text_home_store"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="10dp"
+            android:background="@null"
+            android:elevation="1dp"
+            android:ellipsize="end"
+            android:hint="@string/search"
+            android:maxLines="1"
+            android:textColor="#2A2D33"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="@+id/card_view_search_home_store"
+            app:layout_constraintEnd_toEndOf="@+id/card_view_search_home_store"
+            app:layout_constraintStart_toEndOf="@+id/image_search_home_store"
+            app:layout_constraintTop_toTopOf="@+id/card_view_search_home_store" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card_view_qr"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginHorizontal="20dp"
+            android:backgroundTint="#FF6E4E"
+            android:elevation="12dp"
+            android:innerRadius="0dp"
+            android:shape="ring"
+            android:thicknessRatio="1.9"
+            app:cardCornerRadius="40dp"
+            app:layout_constraintBottom_toBottomOf="@+id/card_view_search_home_store"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/card_view_search_home_store"
-            app:layout_constraintTop_toBottomOf="@+id/recycler_category_home_store" />
+            app:layout_constraintTop_toTopOf="@+id/card_view_search_home_store">
 
-        <ImageView
-            android:id="@+id/image_qrcode_home_store"
-            android:layout_width="0dp"
-            android:layout_height="14dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="45dp"
-            android:src="@drawable/image_qrcode"
-            app:layout_constraintStart_toEndOf="@+id/card_view_search_home_store"
-            app:layout_constraintTop_toBottomOf="@+id/recycler_category_home_store" />
+            <ImageView
+                android:id="@+id/image_qrcode_home_store"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:scaleType="center"
+                android:src="@drawable/image_qrcode" />
+
+        </androidx.cardview.widget.CardView>
 
         <TextView
             android:id="@+id/text_sales_home_store"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="17dp"
-            android:layout_marginTop="24dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
             android:text="@string/hot_sales"
             android:textColor="#010035"
-            android:textSize="25sp"
+            android:textSize="20sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/card_view_search_home_store" />
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="189dp"
-            android:layout_marginTop="31dp"
-            android:layout_marginEnd="33dp"
+            android:layout_marginEnd="20dp"
             android:text="@string/see_more"
             android:textColor="#FF6E4E"
-            android:textSize="15sp"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="@+id/text_sales_home_store"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/card_view_search_home_store" />
+            app:layout_constraintTop_toTopOf="@+id/text_sales_home_store" />
 
         <androidx.viewpager2.widget.ViewPager2
             android:id="@+id/view_pager_hot_sales_home_store"
             android:layout_width="match_parent"
-            android:layout_height="190dp"
+            android:layout_height="200dp"
             android:layout_marginHorizontal="10dp"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="10dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/text_sales_home_store" />
@@ -206,24 +193,24 @@
             android:id="@+id/text_best_seller"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="17dp"
-            android:layout_marginTop="11dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp"
             android:text="@string/best_seller"
             android:textColor="#010035"
-            android:textSize="25sp"
+            android:textSize="20sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/view_pager_hot_sales_home_store" />
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="33dp"
+            android:layout_marginEnd="40dp"
             android:text="@string/see_more"
             android:textColor="#FF6E4E"
-            android:textSize="15sp"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="@+id/text_best_seller"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/view_pager_hot_sales_home_store" />
+            app:layout_constraintTop_toTopOf="@+id/text_best_seller" />
 
         <include
             android:id="@+id/container_filter_home_store"
@@ -241,7 +228,8 @@
             android:id="@+id/recycler_best_seller_home_store"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="7dp"
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginTop="10dp"
             android:orientation="vertical"
             android:overScrollMode="never"
             app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
@@ -255,73 +243,72 @@
         <androidx.cardview.widget.CardView
             android:id="@+id/card_view_home_store"
             android:layout_width="0dp"
-            android:layout_height="72dp"
-            android:layout_marginTop="8dp"
+            android:layout_height="70dp"
+            android:layout_marginTop="20dp"
             android:backgroundTint="#010035"
             app:cardCornerRadius="30dp"
             app:cardElevation="0dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/container_filter_home_store">
+            app:layout_constraintTop_toBottomOf="@+id/container_filter_home_store" />
 
+        <ImageView
+            android:id="@+id/image_point"
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:layout_marginEnd="10dp"
+            android:src="@drawable/image_point"
+            app:layout_constraintBottom_toBottomOf="@+id/card_view_home_store"
+            app:layout_constraintEnd_toStartOf="@+id/text_explorer"
+            app:layout_constraintTop_toTopOf="@+id/card_view_home_store" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
+        <TextView
+            android:id="@+id/text_explorer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="40dp"
+            android:text="@string/explorer"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="@+id/image_point"
+            app:layout_constraintEnd_toStartOf="@+id/image_store"
+            app:layout_constraintTop_toTopOf="@+id/image_point" />
 
-                <ImageView
-                    android:id="@+id/image_point"
-                    android:layout_width="8dp"
-                    android:layout_height="8dp"
-                    android:layout_marginStart="50dp"
-                    android:layout_marginTop="32dp"
-                    android:layout_marginEnd="7dp"
-                    android:layout_weight="1"
-                    android:src="@drawable/image_point" />
+        <ImageView
+            android:id="@+id/image_store"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginEnd="20dp"
+            android:src="@drawable/image_store"
+            app:layout_constraintBottom_toBottomOf="@+id/image_point"
+            app:layout_constraintEnd_toStartOf="@+id/image_health"
+            app:layout_constraintTop_toTopOf="@+id/image_point" />
 
-                <TextView
-                    android:id="@+id/text_explorer"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="22dp"
-                    android:layout_weight="1"
-                    android:text="@string/explorer"
-                    android:textColor="@color/white"
-                    android:textSize="15sp" />
+        <ImageView
+            android:id="@+id/image_health"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginEnd="20dp"
+            android:src="@drawable/image_favorite"
+            app:layout_constraintBottom_toBottomOf="@+id/image_point"
+            app:layout_constraintEnd_toStartOf="@+id/image_accounts"
+            app:layout_constraintTop_toTopOf="@+id/image_point" />
 
-                <ImageView
-                    android:id="@+id/image_store"
-                    android:layout_width="18dp"
-                    android:layout_height="18dp"
-                    android:layout_marginTop="27dp"
-                    android:layout_weight="1"
-                    android:src="@drawable/image_store" />
-
-                <ImageView
-                    android:id="@+id/image_health"
-                    android:layout_width="18dp"
-                    android:layout_height="18dp"
-                    android:layout_marginTop="28dp"
-                    android:layout_weight="1"
-                    android:src="@drawable/image_favorite" />
-
-                <ImageView
-                    android:id="@+id/image_accounts"
-                    android:layout_width="18dp"
-                    android:layout_height="18dp"
-                    android:layout_marginTop="27dp"
-                    android:layout_marginEnd="30dp"
-                    android:layout_weight="1"
-                    android:src="@drawable/image_accounts" />
-            </LinearLayout>
-        </androidx.cardview.widget.CardView>
+        <ImageView
+            android:id="@+id/image_accounts"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginEnd="40dp"
+            android:src="@drawable/image_accounts"
+            app:layout_constraintBottom_toBottomOf="@+id/image_point"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/image_point" />
 
         <include
             android:id="@+id/included_status_layout"
             layout="@layout/status_layout"
             android:layout_width="match_parent"
-            android:layout_height="190dp"
+            android:layout_height="200dp"
             android:layout_marginTop="150dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
