@@ -2,15 +2,13 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/background_category_item"
-    android:layout_width="98dp"
-    android:layout_height="wrap_content">
-
+    android:layout_width="80dp"
+    android:layout_height="100dp">
 
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/image_category_background_item"
         android:layout_width="0dp"
-        android:layout_height="71dp"
-        android:layout_marginTop="2dp"
+        android:layout_height="70dp"
         android:scaleType="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -21,9 +19,7 @@
         android:id="@+id/image_category_item"
         android:layout_width="0dp"
         android:layout_height="30dp"
-        android:layout_marginTop="22dp"
-        android:layout_marginBottom="40dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/image_category_background_item"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -34,11 +30,11 @@
         android:id="@+id/text_name_category_item"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="7dp"
+        android:layout_marginTop="5dp"
         android:gravity="center"
         android:text="@string/phones"
         android:textColor="#010035"
-        android:textSize="12sp"
+        android:textSize="11sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/image_category_background_item" />
