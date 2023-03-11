@@ -217,6 +217,7 @@
             layout="@layout/fragment_filter_options"
             android:layout_width="0dp"
             android:layout_height="320dp"
+            android:layout_marginHorizontal="10dp"
             android:layout_marginTop="10dp"
             app:layout_constraintBottom_toTopOf="@id/card_view_home_store"
             app:layout_constraintEnd_toEndOf="parent"
