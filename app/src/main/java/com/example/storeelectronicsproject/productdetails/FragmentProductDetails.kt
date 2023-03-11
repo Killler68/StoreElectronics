@@ -74,74 +74,74 @@ class FragmentProductDetails : Fragment() {
         binding.textNamePhoneDetails.text = detailsData.title
         binding.ratingBarDetails.rating = detailsData.rating.toFloat()
 
-        binding.imageBackgroundCapacityDetailsTwo.setOnClickListener {
-            binding.imageBackgroundCapacityDetailsTwo.isEnabled = false
-            binding.imageBackgroundCapacityDetailsOne.isEnabled = true
-            binding.imageBackgroundCapacityDetailsTwo.setColorFilter(
-                ContextCompat.getColor(
-                    requireContext(),
-                    R.color.orange
-                )
-            )
-            binding.textCapacity2Details.setTextColor(
-                ContextCompat.getColor(
-                    requireContext(),
-                    R.color.white
-                )
-            )
-            binding.imageBackgroundCapacityDetailsOne.setColorFilter(
-                ContextCompat.getColor(
-                    requireContext(),
-                    R.color.background_gray
-                )
-            )
-            binding.textCapacity1Details.setTextColor(
-                ContextCompat.getColor(
-                    requireContext(),
-                    R.color.text_gray
-                )
-            )
-        }
+//        binding.imageBackgroundCapacityDetailsTwo.setOnClickListener {
+//            binding.imageBackgroundCapacityDetailsTwo.isEnabled = false
+//            binding.imageBackgroundCapacityDetailsOne.isEnabled = true
+//            binding.imageBackgroundCapacityDetailsTwo.setColorFilter(
+//                ContextCompat.getColor(
+//                    requireContext(),
+//                    R.color.orange
+//                )
+//            )
+//            binding.textCapacity2Details.setTextColor(
+//                ContextCompat.getColor(
+//                    requireContext(),
+//                    R.color.white
+//                )
+//            )
+//            binding.imageBackgroundCapacityDetailsOne.setColorFilter(
+//                ContextCompat.getColor(
+//                    requireContext(),
+//                    R.color.background_gray
+//                )
+//            )
+//            binding.textCapacity1Details.setTextColor(
+//                ContextCompat.getColor(
+//                    requireContext(),
+//                    R.color.text_gray
+//                )
+//            )
+//        }
 
-        binding.imageBackgroundCapacityDetailsOne.setOnClickListener {
-            binding.imageBackgroundCapacityDetailsTwo.isEnabled = true
-            binding.imageBackgroundCapacityDetailsOne.isEnabled = false
-            binding.imageBackgroundCapacityDetailsOne.setColorFilter(
-                ContextCompat.getColor(
-                    requireContext(),
-                    R.color.orange
-                )
-            )
-            binding.textCapacity1Details.setTextColor(
-                ContextCompat.getColor(
-                    requireContext(),
-                    R.color.white
-                )
-            )
-            binding.imageBackgroundCapacityDetailsTwo.setColorFilter(
-                ContextCompat.getColor(
-                    requireContext(),
-                    R.color.background_gray
-                )
-            )
-            binding.textCapacity2Details.setTextColor(
-                ContextCompat.getColor(
-                    requireContext(),
-                    R.color.text_gray
-                )
-            )
-        }
+//        binding.imageBackgroundCapacityDetailsOne.setOnClickListener {
+//            binding.imageBackgroundCapacityDetailsTwo.isEnabled = true
+//            binding.imageBackgroundCapacityDetailsOne.isEnabled = false
+//            binding.imageBackgroundCapacityDetailsOne.setColorFilter(
+//                ContextCompat.getColor(
+//                    requireContext(),
+//                    R.color.orange
+//                )
+//            )
+//            binding.textCapacity1Details.setTextColor(
+//                ContextCompat.getColor(
+//                    requireContext(),
+//                    R.color.white
+//                )
+//            )
+//            binding.imageBackgroundCapacityDetailsTwo.setColorFilter(
+//                ContextCompat.getColor(
+//                    requireContext(),
+//                    R.color.background_gray
+//                )
+//            )
+//            binding.textCapacity2Details.setTextColor(
+//                ContextCompat.getColor(
+//                    requireContext(),
+//                    R.color.text_gray
+//                )
+//            )
+//        }
 
-        binding.textCapacity1Details.text =
-            requireContext().resources.getString(
-                R.string.capacity,
-                detailsData.capacity.map { it[0] }.toString()
-            )
+//        binding.textCapacity1Details.text =
+//            requireContext().resources.getString(
+//                R.string.capacity,
+//                detailsData.capacity.map { it[0] }.toString()
+//            )
 
-        binding.textCapacity2Details.text = requireContext().resources.getString(
-            R.string.capacity,
-            detailsData.capacity.map { it[1] }.toString()
-        )
+//        binding.textCapacity2Details.text = requireContext().resources.getString(
+//            R.string.capacity,
+//            detailsData.capacity.map { it[1] }.toString()
+//        )
 
         binding.imageBackgroundColorOneDetails.setOnClickListener {
             binding.imageColorOneDetails.isVisible = true
